@@ -1,0 +1,208 @@
+/* Стилизация Modal Component */
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0,0,0,.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+}
+.modal.show {
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+.modal.hide {
+  transition: opacity 0.2s ease-in .75s;
+}
+.modal__header{
+  color: var(--text-color);
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.modal__content {
+  padding: 18px 35px;
+  width: 100%;
+  max-width: 600px;
+  position: fixed;
+  left: 50%;
+  top: 150vh;
+  border-radius: 20px;
+  border: 1px solid var(--green-color);
+  background: #222124;
+  transform: translate(-50%, -50%);
+  animation: modalAnimInverted .75s ease-in;
+}
+.modal__content.active {
+  animation: modalAnim .75s ease-out;
+  top: 50%;
+}
+.modal__inputs{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.modal__inputs > input::placeholder,
+.modal__inputs > textarea::placeholder{
+  color: var(--text-color);
+  font-size: 18px;
+  opacity: .5;
+}
+.modal__inputs > input {
+  font-family: inherit;
+  font-size: 18px;
+  width: 100%;
+  background: #28282a;
+  border-radius: 6px;
+  padding: 12px 24px;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  margin-bottom: 20px;
+  transition: all .2s linear;
+}
+.modal__inputs > input:hover,
+.modal__inputs > input:focus{
+  border-bottom-color: var(--green-color);
+}
+.modal__inputs > textarea{
+  resize: vertical;
+  width: 100%;
+  min-height: 80px;
+  max-height: calc(80px * 3);
+  height: 80px;
+  background: #28282a;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 18px;
+  color: var(--text-color);
+  padding: 12px 24px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--text-color);
+  transition: border-bottom-color .2s linear;
+}
+.modal__inputs > textarea:hover,
+.modal__inputs > textarea:focus{
+  border-bottom-color: var(--green-color);
+}
+.modal__inputs > input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}
+.modal__inputs-select{
+  position: relative;
+}
+.modal__inputs .modal__inputs-select select {
+  appearance: none;
+  font-family: inherit;
+  font-size: 18px;
+  width: 100%;
+  background: #28282a;
+  border-radius: 6px;
+  padding: 12px 24px;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  margin-bottom: 20px;
+  transition: all .2s linear;
+}
+
+.modal__inputs .modal__inputs-select select:hover,
+.modal__inputs .modal__inputs-select select:focus {
+  border-bottom-color: var(--green-color);
+}
+.modal__inputs-select select option{
+  background: #28282a;
+}
+.modal__inputs-select select option:hover{
+  background: var(--green-color);
+}
+.modal__inputs-select::after{
+  content: '';
+  position: absolute;
+  right: 30px;
+  top: 17px;
+  border: 1px solid var(--text-color);
+  border-bottom: transparent;
+  border-right: transparent;
+  background: transparent;
+  width: 8px;
+  height: 8px;
+  z-index: 100;
+  transform: rotate(-135deg);
+  transition: all .2s linear;
+  pointer-events: none;
+}
+.modal__inputs-select.active::after{
+  transform: rotate(45deg);
+  top: 20px;
+}
+.modal__inputs-checkbox{
+  position: relative;
+  margin-bottom: 20px;
+}
+.modal__inputs-checkbox input{
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+}
+.modal__inputs-checkbox label {
+  display: block;
+  margin-left: 30px;
+  font-size: 18px;
+  font-family: inherit;
+}
+.modal__inputs-checkbox label::before{
+  content: '';
+  width: 20px;
+  height: 20px;
+  display: block;
+  border: 1px solid var(--green-color);
+  background: transparent;
+  position: absolute;
+  left: 0;
+  top: -1px;
+  transition: background .2s linear;
+}
+.modal__inputs-checkbox input:checked + label::before{
+  background: var(--green-color);
+}
+.modal__btns{
+  display: flex;
+  justify-content: space-around;
+}
+.modal__btn{
+  width: 40%;
+}
+.modal__error{
+  color: var(--error-color);
+  text-align: center;
+  margin: 15px 0;
+  font-family: inherit;
+  font-size: 18px;
+}
+@keyframes modalAnim {
+  0% {
+    top: 150vh;
+  }
+  60% {
+    top: 45%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+
+@keyframes modalAnimInverted {
+  0% {
+    top: 50%;
+  }
+  60% {
+    top: 45%;
+  }
+  100% {
+    top: 150vh;
+  }
+}

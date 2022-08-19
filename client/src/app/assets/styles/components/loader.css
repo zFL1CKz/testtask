@@ -1,0 +1,27 @@
+/* Стилизация Loader Component */
+
+.loader__wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 50;
+}
+.loader__wrapper .loader__content{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 8px solid var(--dark-green-color);
+  border-top-color: var(--green-color);
+  animation: loader 1.25s linear infinite;
+}
+@keyframes loader {
+  50% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

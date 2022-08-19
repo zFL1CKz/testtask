@@ -1,0 +1,63 @@
+/* Стилизация Table Component */
+
+.table{
+  width: 100%;
+}
+.table__wrapper{
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 2px solid var(--green-color);
+  margin-bottom: 25px;
+}
+.table__wrapper::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+}
+.table__wrapper::-webkit-scrollbar-track{
+  background: transparent;
+}
+.table__wrapper::-webkit-scrollbar-thumb{
+  background: var(--green-color);
+  border-radius: 15px;
+}
+.table__title{
+  text-align: center;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  font-family: inherit;
+  font-size: 28px;
+  font-weight: 700;
+}
+.table table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+.table table thead tr{
+  background: var(--green-color);
+  color: var(--text-color);
+  font-weight: 700;
+}
+.table table th,
+.table table td{
+  padding: 12px 6px;
+}
+.table table td img{
+  width: 20px;
+  height: 20px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.table table tbody tr{
+  transition: background .2s linear;
+}
+.table table tbody tr:nth-of-type(even){
+  background: rgb(28, 28, 33);
+}
+.table table tbody tr:hover{
+  background: var(--dark-green-color);
+}

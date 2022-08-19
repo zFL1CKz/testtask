@@ -1,0 +1,29 @@
+/* Стилизация Button Component */
+
+button.button{
+  font-family: inherit;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 18px 35px;
+  transition: all .2s linear;
+}
+button.button.secondary{
+  color: var(--green-color);
+  background: var(--text-color);
+  border: 2px solid var(--text-color);
+}
+button.button.secondary:hover{
+  background: transparent;
+  color: var(--text-color)
+}
+button.button.primary{
+  color: var(--text-color);
+  background: var(--green-color);
+  border: 2px solid var(--green-color);
+}
+button.button.primary:hover{
+  background: transparent;
+  color: var(--green-color)
+}

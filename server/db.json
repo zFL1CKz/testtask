@@ -1,0 +1,215 @@
+{
+  "divisions": [
+    {
+      "id": 1,
+      "title": "Отдел разработки",
+      "date": "16.08.2021",
+      "desc": "Отдел разработки",
+      "parentDivisionId": null
+    },
+    {
+      "id": 5,
+      "title": "Веб-разработка",
+      "date": "16.09.2021",
+      "desc": "Веб-разработка",
+      "parentDivisionId": 1
+    },
+    {
+      "id": 8,
+      "title": "Frontend",
+      "date": "16.09.2021",
+      "desc": "Frontend",
+      "parentDivisionId": 5
+    },
+    {
+      "id": 15,
+      "title": "React",
+      "date": "16.09.2021",
+      "desc": "React",
+      "parentDivisionId": 8
+    },
+    {
+      "id": 16,
+      "title": "Vue",
+      "date": "16.09.2021",
+      "desc": "Vue",
+      "parentDivisionId": 8
+    },
+    {
+      "id": 17,
+      "title": "Angular",
+      "date": "03.05.2022",
+      "desc": "Angular",
+      "parentDivisionId": 8
+    },
+    {
+      "id": 18,
+      "title": "Svelte",
+      "date": "06.08.2022",
+      "desc": "Svelte",
+      "parentDivisionId": 8
+    },
+    {
+      "id": 9,
+      "title": "Backend",
+      "date": "16.09.2021",
+      "desc": "Backend",
+      "parentDivisionId": 5
+    },
+    {
+      "id": 19,
+      "title": "C#",
+      "date": "16.09.2021",
+      "desc": "C#",
+      "parentDivisionId": 9
+    },
+    {
+      "id": 20,
+      "title": "Node.js",
+      "date": "18.07.2022",
+      "desc": "Node.js",
+      "parentDivisionId": 9
+    },
+    {
+      "id": 14,
+      "title": "Тестирование",
+      "date": "16.09.2021",
+      "desc": "Тестирование",
+      "parentDivisionId": 5
+    },
+    {
+      "id": 6,
+      "title": "Разработка игр",
+      "date": "05.04.2022",
+      "desc": "Разработка игр",
+      "parentDivisionId": 1
+    },
+    {
+      "id": 7,
+      "title": "Мобильная разработка",
+      "date": "12.10.2021",
+      "desc": "Мобильная разработка",
+      "parentDivisionId": 1
+    },
+    {
+      "id": 2,
+      "title": "Отдел кадров",
+      "date": "13.06.2021",
+      "desc": "Отдел кадров",
+      "parentDivisionId": null
+    },
+    {
+      "id": 10,
+      "title": "Учет персонала",
+      "date": "13.06.2021",
+      "desc": "Учет персонала",
+      "parentDivisionId": 2
+    },
+    {
+      "id": 11,
+      "title": "Подбор персонала",
+      "date": "13.06.2021",
+      "desc": "Подбор персонала",
+      "parentDivisionId": 2
+    },
+    {
+      "id": 23,
+      "title": "Обучение персонала",
+      "date": "13.06.2021",
+      "desc": "Обучение персонала",
+      "parentDivisionId": 2
+    },
+    {
+      "id": 3,
+      "title": "Отдел бухгалтерии",
+      "date": "27.02.2021",
+      "desc": "Отдел бухгалтерии",
+      "parentDivisionId": null
+    },
+    {
+      "id": 24,
+      "title": "Производственный отдел",
+      "date": "27.02.2021",
+      "desc": "Производственный отдел",
+      "parentDivisionId": 3
+    },
+    {
+      "id": 25,
+      "title": "Финансовый отдел",
+      "date": "27.02.2021",
+      "desc": "Финансовый отдел",
+      "parentDivisionId": 3
+    },
+    {
+      "id": 30,
+      "title": "Отдел учета операций",
+      "date": "27.02.2021",
+      "desc": "Отдел учета операций по счетам",
+      "parentDivisionId": 25
+    },
+    {
+      "id": 31,
+      "title": "Отдел финансовой статистики",
+      "date": "27.02.2021",
+      "desc": "Отдел финансовой статистики",
+      "parentDivisionId": 25
+    },
+    {
+      "id": 32,
+      "title": "Отдел учета расходов",
+      "date": "27.02.2021",
+      "desc": "Отдел учета расходов",
+      "parentDivisionId": 31
+    },
+    {
+      "id": 33,
+      "title": "Отдел учета задолженностей",
+      "date": "27.02.2021",
+      "desc": "Отдел учета задолженностей",
+      "parentDivisionId": 31
+    },
+    {
+      "id": 27,
+      "title": "Отдел налогового учета",
+      "date": "27.02.2021",
+      "desc": "Отдел налогового отдел",
+      "parentDivisionId": 3
+    },
+    {
+      "id": 28,
+      "title": "Отдел инвентаризации",
+      "date": "27.02.2021",
+      "desc": "Отдел инвентаризации",
+      "parentDivisionId": 27
+    },
+    {
+      "id": 29,
+      "title": "Отдел отчетности",
+      "date": "27.02.2021",
+      "desc": "Отдел отчетности",
+      "parentDivisionId": 27
+    },
+    {
+      "id": 4,
+      "title": "Отдел рекламы",
+      "date": "16.02.2020",
+      "desc": "Отдел рекламы",
+      "parentDivisionId": null
+    },
+    {
+      "id": 12,
+      "title": "Интернет-маркетинг",
+      "date": "16.02.2020",
+      "desc": "Интернет-маркетинг",
+      "parentDivisionId": 4
+    },
+    {
+      "id": 13,
+      "title": "Рекламная аналитика",
+      "date": "16.02.2020",
+      "desc": "Рекламная аналитика",
+      "parentDivisionId": 4
+    }
+  ],
+  "employee": []
+}

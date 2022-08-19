@@ -1,0 +1,11 @@
+/* Объединение все стилей компонентов */
+
+@import './variables.css';
+@import "components/button.css";
+@import "components/loader.css";
+@import "components/modal.css";
+@import "components/table.css";
+@import "components/divisions.css";
+
+
+

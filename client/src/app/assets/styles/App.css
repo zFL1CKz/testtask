@@ -1,0 +1,30 @@
+/* Стилизация App Component & обнуление дефолтных стилей браузера */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'reset.css';
+@import "variables.css";
+
+html, body{
+  font-family: 'Montserrat', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 18px;
+}
+body::-webkit-scrollbar{
+  width: 5px;
+  height: 5px;
+}
+body::-webkit-scrollbar-track{
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb{
+  background: var(--green-color);
+  border-radius: 15px;
+}
+.container{
+  display: flex;
+}
+.wrapper{
+  padding: 18px 35px;
+  width: 100%;
+}
