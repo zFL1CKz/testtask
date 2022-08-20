@@ -30,6 +30,7 @@ const ModalDivisionForm: FC<IModal> = memo(({isActive , setActive}) => {
 
   /** Инициализация состояния формы по дефолту */
   useEffect(() => {
+    setFormError('')
     setForm({
       title: division.id !== 0 ? division.title : '',
       date: division.id !== 0 ? convertedDateToInput(division.date) : '',
@@ -50,7 +51,7 @@ const ModalDivisionForm: FC<IModal> = memo(({isActive , setActive}) => {
   }
 
   /** Функция изменения состояния поля с выбором */
-  const toggleActiveSelect = (e: MouseEvent<HTMLDivElement>) => {
+  const toggleDivActiveClass = (e: MouseEvent<HTMLDivElement>) => {
     e.currentTarget.classList.toggle('active')
   }
 
@@ -72,9 +73,9 @@ const ModalDivisionForm: FC<IModal> = memo(({isActive , setActive}) => {
     if(validationForm.validationDivisionForm(form).result){
       const resultForm: IDivision = {
         id: form.id,
-        title: form.title,
+        title: form.title.trim(),
         date: new Date(form.date).toLocaleDateString(),
-        desc: form.desc,
+        desc: form.desc.trim(),
         parentDivisionId: form.parentDivisionId === 0 ? null : form.parentDivisionId
       }
       if(division.id === 0){
@@ -101,7 +102,7 @@ const ModalDivisionForm: FC<IModal> = memo(({isActive , setActive}) => {
           <input value={form.title} type='text' placeholder='Название*' name='title' onChange={handleFormChange}/>
           <input value={form.date} type='date' placeholder='Дата создания*' name='date' onChange={handleFormChange}/>
           <textarea value={form.desc} placeholder='Описание' name='desc' onChange={handleFormChange}/>
-          <div className='modal__inputs-select' onClick={e => toggleActiveSelect(e)}>
+          <div className='modal__inputs-select' onClick={e => toggleDivActiveClass(e)}>
             <select name='parentDivisionId' value={form.parentDivisionId ?? 0} onChange={handleSelectChange}>
               <option value={0}>Нет родительского подразделения</option>
               {allDivisions?.sort((a, b) => a.title.localeCompare(b.title)).map(division =>

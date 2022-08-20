@@ -5,7 +5,7 @@ import {useAppSelector} from '../../../hooks/redux'
 import {useAddNewEmployeeMutation, useUpdateEmployeeMutation} from '../../../app/services/employee'
 import useTree from '../../../hooks/useTree'
 import validationForm from '../../../utils/validationForm'
-import {convertedDateToInput} from '../../../utils/date'
+import {convertedDateToInput, validationEmployeeDateOfBirth} from '../../../utils/date'
 import Button, {ButtonVariant} from '../../ui/Button'
 import '../../../app/assets/styles/components.css'
 
@@ -32,6 +32,7 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
 
   /** Инициализация состояния формы по дефолту */
   useEffect(() => {
+    setFormError('')
     setForm({
       id: employee ? employee.id : 0,
       divisionId: employee ? employee.divisionId : currentDivision.id,
@@ -47,21 +48,21 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
 
   /** Функция изменения поля checkbox */
   const handleCheckBoxChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setForm(prevState => ({...prevState, isLicense: e.target.checked}))
+    setForm((prevState) => ({...prevState, [e.target.name]: e.target.checked}))
   }
 
   /** Функция изменения текстовых полей формы */
-  const handleFormChange = ({target: {name, value}}: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prevState) => ({...prevState, [name]: value}))
+  const handleFormChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prevState) => ({...prevState, [e.target.name]: e.target.value}))
   }
 
   /** Функция изменения полей формы с выбором */
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setForm(prevState => ({...prevState, [e.target.name]: Number(e.target.value)}))
+    setForm((prevState) => ({...prevState, [e.target.name]: Number(e.target.value)}))
   }
 
   /** Функция изменения состояния поля с выбором */
-  const toggleActiveSelect = (e: MouseEvent<HTMLDivElement>) => {
+  const toggleDivActiveClass = (e: MouseEvent<HTMLDivElement>) => {
     e.currentTarget.classList.toggle('active')
   }
 
@@ -89,12 +90,12 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
         id: form.id,
         divisionId: form.divisionId,
         dateOfBirth: new Date(form.dateOfBirth).toLocaleDateString(),
-        lastname: form.lastname,
-        firstname: form.firstname,
-        middlename: form.middlename,
+        lastname: form.lastname.trim(),
+        firstname: form.firstname.trim(),
+        middlename: form.middlename.trim(),
         isLicense: form.isLicense,
         genderId: form.genderId,
-        post: form.post
+        post: form.post.trim()
       }
       if(employee){
         await updateEmployee({...resultForm} as IEmployee)
@@ -116,20 +117,27 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
             <input value={form.lastname} type='text' placeholder='Фамилия*' name='lastname' onChange={handleFormChange}/>
             <input value={form.firstname} type='text' placeholder='Имя*' name='firstname' onChange={handleFormChange}/>
             <input value={form.middlename} type='text' placeholder='Отчество' name='middlename' onChange={handleFormChange}/>
-            <div className='modal__inputs-select' onClick={e => toggleActiveSelect(e)}>
+            <div className='modal__inputs-select' onClick={e => toggleDivActiveClass(e)}>
               <select value={form.genderId} name='genderId' onChange={handleSelectChange}>
                 <option value='0'>Мужской</option>
                 <option value='1'>Женский</option>
               </select>
             </div>
-            <input value={form.dateOfBirth} type='date' placeholder='Дата рождения*' name='dateOfBirth' onChange={handleFormChange}/>
+            <input
+              value={form.dateOfBirth}
+              type='date'
+              placeholder='Дата рождения*'
+              max={validationEmployeeDateOfBirth(new Date().toLocaleDateString(), false)}
+              min={validationEmployeeDateOfBirth(new Date().toLocaleDateString(), true)}
+              name='dateOfBirth'
+              onChange={handleFormChange}/>
             <input value={form.post} type='text' placeholder='Должность' name='post' onChange={handleFormChange}/>
-            <div className='modal__inputs-checkbox'>
-              <input type='checkbox' id='checkbox' checked={form.isLicense} onChange={handleCheckBoxChange}/>
+            <div className={form.isLicense ? 'modal__inputs-checkbox active' : 'modal__inputs-checkbox'}>
+              <input type='checkbox' id='checkbox' onChange={handleCheckBoxChange} checked={form.isLicense} name='isLicense'/>
               <label htmlFor='checkbox'>Имеется ли водительское удостоверение?</label>
             </div>
-            <div className='modal__inputs-select'>
-              <select value={form.divisionId ?? 0} onChange={handleSelectChange} name='divisionId'>
+            <div className='modal__inputs-select' onClick={e => toggleDivActiveClass(e)}>
+              <select value={form.divisionId ?? 0}  onChange={handleSelectChange} name='divisionId'>
                 <option value={0} hidden>Подразделение</option>
                 {sortedAllDivisions?.map(division =>
                   <option key={division.id} value={division.id}>{division.title}</option>

@@ -5,6 +5,8 @@ import ModalEmployeeForm from '../logic/Modals/ModalEmployeeForm'
 import deleteSvg from '../../app/assets/images/employee-delete.svg'
 import editSvg from '../../app/assets/images/employee-edit.svg'
 import '../../app/assets/styles/components.css'
+import Button, {ButtonVariant} from './Button'
+import Modal from './Modal'
 
 /** Интерфейс пропсов таблицы */
 interface ITableProps{
@@ -14,14 +16,18 @@ interface ITableProps{
 
 /** Компонент таблицы */
 const Table: FC<ITableProps> = ({employees, title}) => {
+  const [currentEmployee, setCurrentEmployee] = useState<IEmployee>()
+
   const [deleteEmployee] = useDeleteEmployeeMutation()
 
   const [employeeModalActive, setEmployeeModalActive] = useState<boolean>(false)
+  const [modalActive, setModalActive] = useState<boolean>(false)
   const [employee, setEmployee] = useState<IEmployee | undefined>(undefined)
 
   /** Функция удаления сотрудника */
-  const handleRemove = (employee: IEmployee) => {
-    deleteEmployee(employee)
+  const handleRemove = async (employee: IEmployee) => {
+    await deleteEmployee(employee)
+    setModalActive(false)
   }
 
   return (
@@ -53,13 +59,30 @@ const Table: FC<ITableProps> = ({employees, title}) => {
                   setEmployeeModalActive(true)
                   setEmployee(employee)
                 }}><img src={editSvg} alt=''/></td>
-                <td onClick={() => handleRemove(employee)}><img src={deleteSvg} alt=''/></td>
+                <td onClick={() => {
+                  setModalActive(true)
+                  setCurrentEmployee(employee)
+                }}><img src={deleteSvg} alt=''/></td>
               </tr>
             )}
             </tbody>
           </table>
         </div>
       </div>
+
+      <Modal isActive={modalActive} setActive={setModalActive}>
+        <div className='modal__header'>Удалить сотрудника?</div>
+        <div className='modal__btns'>
+          <Button
+            className='modal__btn' variant={ButtonVariant.secondary} content='Отмена'
+            onClick={() => setModalActive(false)}
+          />
+          <Button
+            className='modal__btn' variant={ButtonVariant.primary}
+            content='Удалить' onClick={() => handleRemove(currentEmployee as IEmployee)}
+          />
+        </div>
+      </Modal>
       <ModalEmployeeForm isActive={employeeModalActive} setActive={setEmployeeModalActive} employee={employee}/>
     </>
   )

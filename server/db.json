@@ -8,55 +8,6 @@
       "parentDivisionId": null
     },
     {
-      "id": 5,
-      "title": "Веб-разработка",
-      "date": "16.09.2021",
-      "desc": "Веб-разработка",
-      "parentDivisionId": 1
-    },
-    {
-      "id": 8,
-      "title": "Frontend",
-      "date": "16.09.2021",
-      "desc": "Frontend",
-      "parentDivisionId": 5
-    },
-    {
-      "id": 15,
-      "title": "React",
-      "date": "16.09.2021",
-      "desc": "React",
-      "parentDivisionId": 8
-    },
-    {
-      "id": 16,
-      "title": "Vue",
-      "date": "16.09.2021",
-      "desc": "Vue",
-      "parentDivisionId": 8
-    },
-    {
-      "id": 17,
-      "title": "Angular",
-      "date": "03.05.2022",
-      "desc": "Angular",
-      "parentDivisionId": 8
-    },
-    {
-      "id": 18,
-      "title": "Svelte",
-      "date": "06.08.2022",
-      "desc": "Svelte",
-      "parentDivisionId": 8
-    },
-    {
-      "id": 9,
-      "title": "Backend",
-      "date": "16.09.2021",
-      "desc": "Backend",
-      "parentDivisionId": 5
-    },
-    {
       "id": 19,
       "title": "C#",
       "date": "16.09.2021",
@@ -72,10 +23,10 @@
     },
     {
       "id": 14,
-      "title": "Тестирование",
       "date": "16.09.2021",
+      "title": "Тестирование",
       "desc": "Тестирование",
-      "parentDivisionId": 5
+      "parentDivisionId": 1
     },
     {
       "id": 6,
@@ -209,7 +160,194 @@
       "date": "16.02.2020",
       "desc": "Рекламная аналитика",
       "parentDivisionId": 4
+    },
+    {
+      "id": 35,
+      "title": "Frontend",
+      "date": "20.08.2022",
+      "desc": "Frontend",
+      "parentDivisionId": 37
+    },
+    {
+      "id": 36,
+      "title": "Backend",
+      "date": "20.08.2022",
+      "desc": "",
+      "parentDivisionId": 37
+    },
+    {
+      "id": 37,
+      "title": "Веб-разработка",
+      "date": "20.08.2022",
+      "desc": "",
+      "parentDivisionId": 1
     }
   ],
-  "employee": []
+  "employee": [
+    {
+      "id": 1,
+      "divisionId": 36,
+      "dateOfBirth": "24.05.2001",
+      "lastname": "Маслов",
+      "firstname": "Вячеслав",
+      "middlename": "Егорович",
+      "isLicense": true,
+      "genderId": 0,
+      "post": "Backend-разработчик"
+    },
+    {
+      "id": 2,
+      "divisionId": 36,
+      "dateOfBirth": "20.08.1991",
+      "lastname": "Борисов",
+      "firstname": "Вадим",
+      "middlename": "Игоревич",
+      "isLicense": false,
+      "genderId": 0,
+      "post": "Backend-разработчик"
+    },
+    {
+      "id": 3,
+      "divisionId": 36,
+      "dateOfBirth": "20.06.1989",
+      "lastname": "Калашников",
+      "firstname": "Кирилл",
+      "middlename": "Артёмович",
+      "isLicense": false,
+      "genderId": 0,
+      "post": "Backend-разработчик"
+    },
+    {
+      "id": 4,
+      "divisionId": 35,
+      "dateOfBirth": "19.09.1984",
+      "lastname": "Тетерин",
+      "firstname": "Тарас",
+      "middlename": "Михайлович",
+      "isLicense": true,
+      "genderId": 0,
+      "post": "Frontend-разработчик"
+    },
+    {
+      "id": 5,
+      "divisionId": 35,
+      "dateOfBirth": "03.08.1965",
+      "lastname": "Поляков",
+      "firstname": "Даниил",
+      "middlename": "Николаевич",
+      "isLicense": true,
+      "genderId": 0,
+      "post": "Frontend-разработчик"
+    },
+    {
+      "id": 6,
+      "divisionId": 35,
+      "dateOfBirth": "05.03.1999",
+      "lastname": "Наумов",
+      "firstname": "Егор",
+      "middlename": "Ярославович",
+      "isLicense": false,
+      "genderId": 0,
+      "post": "Frontend-разработчик"
+    },
+    {
+      "id": 7,
+      "divisionId": 35,
+      "dateOfBirth": "14.07.1995",
+      "lastname": "Мухин",
+      "firstname": "Григорий",
+      "middlename": "Авдеевич",
+      "isLicense": false,
+      "genderId": 0,
+      "post": "Frontend-разработчик"
+    },
+    {
+      "id": 8,
+      "divisionId": 37,
+      "dateOfBirth": "31.05.1976",
+      "lastname": "Гришин",
+      "firstname": "Владимир",
+      "middlename": "Лаврентьевич",
+      "isLicense": true,
+      "genderId": 0,
+      "post": "Team Lead"
+    },
+    {
+      "id": 9,
+      "divisionId": 37,
+      "dateOfBirth": "02.03.1977",
+      "lastname": "Ермаков",
+      "firstname": "Ярослав",
+      "middlename": "Федорович",
+      "isLicense": true,
+      "genderId": 0,
+      "post": "Tech Lead"
+    },
+    {
+      "id": 10,
+      "divisionId": 3,
+      "dateOfBirth": "22.04.1972",
+      "lastname": "Елисеева",
+      "firstname": "Лунара",
+      "middlename": "Ярославовна",
+      "isLicense": false,
+      "genderId": 1,
+      "post": "Главный бухгалтер"
+    },
+    {
+      "id": 11,
+      "divisionId": 3,
+      "dateOfBirth": "07.07.1969",
+      "lastname": "Гаврилова",
+      "firstname": "Элиза",
+      "middlename": "Мироновна",
+      "isLicense": false,
+      "genderId": 1,
+      "post": "Главный бухгалтер"
+    },
+    {
+      "id": 12,
+      "divisionId": 30,
+      "dateOfBirth": "12.03.2003",
+      "lastname": "Евсеева",
+      "firstname": "Дарья",
+      "middlename": "Кирилловна",
+      "isLicense": true,
+      "genderId": 1,
+      "post": "Бухгалтер"
+    },
+    {
+      "id": 13,
+      "divisionId": 31,
+      "dateOfBirth": "24.06.1991",
+      "lastname": "Гордеева",
+      "firstname": "Доминика",
+      "middlename": "Ростиславовна",
+      "isLicense": true,
+      "genderId": 1,
+      "post": ""
+    },
+    {
+      "id": 14,
+      "divisionId": 32,
+      "dateOfBirth": "29.10.1988",
+      "lastname": "Сысоева",
+      "firstname": "Алёна",
+      "middlename": "Давидовна",
+      "isLicense": true,
+      "genderId": 1,
+      "post": ""
+    },
+    {
+      "id": 15,
+      "divisionId": 33,
+      "dateOfBirth": "04.02.1975",
+      "lastname": "Беляева",
+      "firstname": "Гаянэ",
+      "middlename": "Романовна",
+      "isLicense": false,
+      "genderId": 1,
+      "post": "Бухгалтер"
+    }
+  ]
 }
