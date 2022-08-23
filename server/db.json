@@ -348,6 +348,17 @@
       "isLicense": false,
       "genderId": 1,
       "post": "Бухгалтер"
+    },
+    {
+      "id": 16,
+      "divisionId": 1,
+      "dateOfBirth": "12.03.2002",
+      "lastname": "Тест",
+      "firstname": "Тест",
+      "middlename": "",
+      "isLicense": false,
+      "genderId": 0,
+      "post": ""
     }
   ]
 }

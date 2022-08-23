@@ -9,8 +9,9 @@ import {convertedDateToInput, validationEmployeeDateOfBirth} from '../../../util
 import Button, {ButtonVariant} from '../../ui/Button'
 import '../../../app/assets/styles/components.css'
 
-const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) => {
+const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive}) => {
   const currentDivision = useAppSelector(state => state.division)
+  const currentEmployee = useAppSelector(state => state.employee)
   const allDivisions = useTree(null).divisions
   const sortedAllDivisions = [...allDivisions ?? []].sort((a, b) => a.title.localeCompare(b.title))
   const [addNewEmployee] = useAddNewEmployeeMutation()
@@ -34,17 +35,17 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
   useEffect(() => {
     setFormError('')
     setForm({
-      id: employee ? employee.id : 0,
-      divisionId: employee ? employee.divisionId : currentDivision.id,
-      lastname: employee ? employee.lastname : '',
-      firstname: employee ? employee.firstname : '',
-      middlename: employee ? employee.middlename : '',
-      post: employee ? employee.post : '',
-      genderId: employee ? employee.genderId : 0,
-      dateOfBirth: employee ? convertedDateToInput(employee.dateOfBirth) : '',
-      isLicense: employee ? employee.isLicense : false
+      id: currentEmployee.id !== 0 ? currentEmployee.id : 0,
+      divisionId: currentEmployee.id !== 0 ? currentEmployee.divisionId : currentDivision.id,
+      lastname: currentEmployee.id !== 0 ? currentEmployee.lastname : '',
+      firstname: currentEmployee.id !== 0 ? currentEmployee.firstname : '',
+      middlename: currentEmployee.id !== 0 ? currentEmployee.middlename : '',
+      post: currentEmployee.id !== 0 ? currentEmployee.post : '',
+      genderId: currentEmployee.id !== 0 ? currentEmployee.genderId : 0,
+      dateOfBirth: currentEmployee.id !== 0 ? convertedDateToInput(currentEmployee.dateOfBirth) : '',
+      isLicense: currentEmployee.id !== 0 ? currentEmployee.isLicense : false
     })
-  }, [employee, currentDivision, isActive])
+  }, [currentEmployee])
 
   /** Функция изменения поля checkbox */
   const handleCheckBoxChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +98,7 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
         genderId: form.genderId,
         post: form.post.trim()
       }
-      if(employee){
+      if(currentEmployee.id !== 0){
         await updateEmployee({...resultForm} as IEmployee)
       } else {
         await addNewEmployee({...resultForm} as IEmployee)
@@ -112,7 +113,7 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
   return (
     <div className={isActive ? 'modal show' : 'modal hide'} onClick={() => setActive(false)}>
       <div className={isActive ? 'modal__content active' : 'modal__content'} onClick={e => e.stopPropagation()}>
-        <h1 className='modal__header'>{employee ? 'Изменить' : 'Добавить'} сотрудника</h1>
+        <h1 className='modal__header'>{currentEmployee.id !== 0 ? 'Изменить' : 'Добавить'} сотрудника</h1>
           <div className='modal__inputs'>
             <input value={form.lastname} type='text' placeholder='Фамилия*' name='lastname' onChange={handleFormChange}/>
             <input value={form.firstname} type='text' placeholder='Имя*' name='firstname' onChange={handleFormChange}/>
@@ -132,12 +133,18 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
               name='dateOfBirth'
               onChange={handleFormChange}/>
             <input value={form.post} type='text' placeholder='Должность' name='post' onChange={handleFormChange}/>
-            <div className={form.isLicense ? 'modal__inputs-checkbox active' : 'modal__inputs-checkbox'}>
-              <input type='checkbox' id='checkbox' onChange={handleCheckBoxChange} checked={form.isLicense} name='isLicense'/>
-              <label htmlFor='checkbox'>Имеется ли водительское удостоверение?</label>
+            <div className='modal__inputs-checkbox'>
+              <input
+                type='checkbox'
+                id='checkbox'
+                name='isLicense'
+                checked={form.isLicense}
+                onChange={handleCheckBoxChange}
+                />
+              <label htmlFor='checkbox' onClick={e => e.stopPropagation()}>Имеется ли водительское удостоверение?</label>
             </div>
             <div className='modal__inputs-select' onClick={e => toggleDivActiveClass(e)}>
-              <select value={form.divisionId ?? 0}  onChange={handleSelectChange} name='divisionId'>
+              <select value={form.divisionId ?? 0} onChange={handleSelectChange} name='divisionId'>
                 <option value={0} hidden>Подразделение</option>
                 {sortedAllDivisions?.map(division =>
                   <option key={division.id} value={division.id}>{division.title}</option>
@@ -152,7 +159,7 @@ const ModalEmployeeForm: FC<IModal> = memo(({isActive , setActive, employee}) =>
               />
               <Button
                 className='modal__btn' variant={ButtonVariant.primary}
-                content={employee ? 'Изменить' : 'Добавить'} onClick={handleSubmitForm}
+                content={currentEmployee.id !== 0 ? 'Изменить' : 'Добавить'} onClick={handleSubmitForm}
               />
             </div>
             {formError &&

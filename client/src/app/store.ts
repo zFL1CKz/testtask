@@ -2,10 +2,12 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit'
 import {divisionAPI} from './services/division'
 import {employeeAPI} from './services/employee'
 import DivisionSlice from './features/DivisionSlice'
+import EmployeeSlice from './features/EmployeeSlice'
 
 /** Общий контейнер всех редьюсеров */
 const rootReducer = combineReducers({
   division: DivisionSlice,
+  employee: EmployeeSlice,
   [divisionAPI.reducerPath]: divisionAPI.reducer,
   [employeeAPI.reducerPath]: employeeAPI.reducer
 })

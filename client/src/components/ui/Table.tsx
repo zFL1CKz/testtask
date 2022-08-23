@@ -7,6 +7,8 @@ import editSvg from '../../app/assets/images/employee-edit.svg'
 import '../../app/assets/styles/components.css'
 import Button, {ButtonVariant} from './Button'
 import Modal from './Modal'
+import {useAppDispatch, useAppSelector} from '../../hooks/redux'
+import {resetCurrentEmployee, setCurrentEmployee} from '../../app/features/EmployeeSlice'
 
 /** Интерфейс пропсов таблицы */
 interface ITableProps{
@@ -16,17 +18,17 @@ interface ITableProps{
 
 /** Компонент таблицы */
 const Table: FC<ITableProps> = ({employees, title}) => {
-  const [currentEmployee, setCurrentEmployee] = useState<IEmployee>()
-
+  const dispatch = useAppDispatch()
+  const currentEmployee = useAppSelector(state => state.employee)
   const [deleteEmployee] = useDeleteEmployeeMutation()
 
   const [employeeModalActive, setEmployeeModalActive] = useState<boolean>(false)
   const [modalActive, setModalActive] = useState<boolean>(false)
-  const [employee, setEmployee] = useState<IEmployee | undefined>(undefined)
 
   /** Функция удаления сотрудника */
   const handleRemove = async (employee: IEmployee) => {
     await deleteEmployee(employee)
+    dispatch(resetCurrentEmployee())
     setModalActive(false)
   }
 
@@ -56,12 +58,11 @@ const Table: FC<ITableProps> = ({employees, title}) => {
                 <td>{employee.post || 'Не указана'}</td>
                 <td>{employee.isLicense ? 'Есть' : 'Нет'}</td>
                 <td onClick={() => {
+                  dispatch(setCurrentEmployee(employee))
                   setEmployeeModalActive(true)
-                  setEmployee(employee)
                 }}><img src={editSvg} alt=''/></td>
                 <td onClick={() => {
                   setModalActive(true)
-                  setCurrentEmployee(employee)
                 }}><img src={deleteSvg} alt=''/></td>
               </tr>
             )}
@@ -83,7 +84,7 @@ const Table: FC<ITableProps> = ({employees, title}) => {
           />
         </div>
       </Modal>
-      <ModalEmployeeForm isActive={employeeModalActive} setActive={setEmployeeModalActive} employee={employee}/>
+      <ModalEmployeeForm isActive={employeeModalActive} setActive={setEmployeeModalActive} />
     </>
   )
 }

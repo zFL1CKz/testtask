@@ -12,6 +12,7 @@ import Table from '../../ui/Table'
 import Button, {ButtonVariant} from '../../ui/Button'
 import Modal from '../../ui/Modal'
 import '../../../app/assets/styles/components.css'
+import {resetCurrentEmployee} from '../../../app/features/EmployeeSlice'
 
 /** Блок вывода инфорамации о подразделении */
 const DivisionInfo: FC = memo(() => {
@@ -77,7 +78,10 @@ const DivisionInfo: FC = memo(() => {
           </div>
         </div>
         <div className='division__info-btns'>
-          <Button variant={ButtonVariant.primary} content='Добавить сотрудника' onClick={() => setFormModalEmployeeActive(true)}/>
+          <Button variant={ButtonVariant.primary} content='Добавить сотрудника' onClick={() => {
+            setFormModalEmployeeActive(true)
+            dispatch(resetCurrentEmployee())
+          }}/>
           <div className='division__info-btns'>
             <Button variant={ButtonVariant.primary} content='Изменить подразделение' onClick={() => setFormModalDivisionActive(true)}/>
             <Button variant={ButtonVariant.primary} content='Удалить подразделение' onClick={() => setModalActive(true)}/>
