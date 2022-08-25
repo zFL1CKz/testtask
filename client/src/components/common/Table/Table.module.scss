@@ -1,0 +1,75 @@
+@import '../../../app/assets/styles/variables';
+
+/* Стилизация Table Component */
+
+.table {
+  width: 100%;
+
+  &__wrapper {
+    border-radius: 20px 20px 0 0;
+    border-bottom: 2px solid $green-color;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+
+      &-track {
+        background: transparent;
+      }
+
+      &-thumb {
+        background: $green-color;
+        border-radius: 15px;
+      }
+    }
+  }
+
+  &__title {
+    width: 100%;
+    text-align: center;
+    color: $text-color;
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+
+    thead tr {
+      background: $green-color;
+      color: $text-color;
+      font-weight: 700;
+    }
+
+    th,
+    td {
+      padding: 12px 6px;
+    }
+
+    td img {
+      width: 20px;
+      height: 20px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    tbody tr {
+      transition: background 0.2s linear;
+
+      &:nth-of-type(even) {
+        background: rgb(28, 28, 33);
+      }
+
+      &:hover {
+        background: $dark-green-color;
+      }
+    }
+  }
+}

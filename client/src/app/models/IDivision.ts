@@ -1,13 +1,13 @@
 /** Интерфейс подразделения */
 export interface IDivision {
   /** Идентификатор подразделения */
-  id: number
+  id: number;
   /** Заголовок подразделения */
-  title: string
+  title: string;
   /** Дата создания подразделения */
-  date: string
+  date: string;
   /** Описание подразделения */
-  desc: string
+  desc: string;
   /** Идентификатор родительского подразделения */
-  parentDivisionId: number | null
+  parentDivisionId: number | null;
 }

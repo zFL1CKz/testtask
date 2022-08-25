@@ -1,0 +1,28 @@
+.employee{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__btn{
+    width: fit-content;
+    margin-bottom: 25px;
+  }
+
+  &__item{
+    margin-bottom: 50px;
+
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+
+  &__title{
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+}

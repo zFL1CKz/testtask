@@ -1,0 +1,167 @@
+/* Стилизация Division Component */
+
+@import '../../../app/assets/styles/variables';
+
+.division {
+  min-width: fit-content;
+  background: linear-gradient(170deg, $dark-color 80%, $green-color 20%);
+  height: 100vh;
+  padding: 25px 40px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  &__wrapper {
+    max-height: 65vh;
+    overflow-y: auto;
+    padding-left: 18px;
+    padding-right: 20px;
+
+    & * {
+      user-select: none;
+    }
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+
+      &-track {
+        background: transparent;
+      }
+      &-thumb {
+        background: $green-color;
+        border-radius: 15px;
+      }
+    }
+  }
+
+  &__title {
+    color: $text-color;
+    margin-bottom: 36px;
+    font-size: 30px;
+  }
+
+  &__item {
+    font-size: 22px;
+    position: relative;
+
+    & > & {
+      margin-left: 30px;
+    }
+
+    &-title {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      transition: all 0.2s linear;
+      white-space: nowrap;
+
+      img {
+        min-width: 20px;
+        min-height: 20px;
+        max-width: 20px;
+        max-height: 20px;
+        cursor: pointer;
+      }
+
+      &.active {
+        color: $green-color;
+      }
+
+      &:hover {
+        color: $green-color;
+      }
+    }
+
+    &.has-child {
+      & > div {
+        display: none;
+      }
+
+      &.open > div {
+        display: block;
+      }
+
+      & .division__item-arrow {
+        position: absolute;
+        left: -18px;
+        top: 5px;
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+        background: transparent;
+        border: 3px solid $green-color;
+        border-bottom: transparent;
+        border-right: transparent;
+        transform: rotate(135deg);
+      }
+
+      &.open > .division__item-title .division__item-arrow {
+        left: -16px;
+        top: 2px;
+        transform: rotate(225deg);
+      }
+    }
+
+    &.without-child {
+      color: $text-color;
+
+      .division__item-arrow {
+        position: absolute;
+        left: -12px;
+        top: 7px;
+        content: '';
+        width: 5px;
+        height: 5px;
+        background: $green-color;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__btn {
+    width: 100%;
+  }
+
+  &__info {
+    min-width: 100%;
+    margin-bottom: 20px;
+
+    &-title {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 36px;
+      color: $text-color;
+
+      & > span {
+        color: $green-color;
+      }
+    }
+
+    &-wrapper {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    &-item {
+      font-size: 22px;
+      line-height: 32px;
+      display: flex;
+
+      & > div {
+        font-style: italic;
+        opacity: 0.5;
+      }
+    }
+
+    &-btns {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      width: 100%;
+      white-space: nowrap;
+    }
+  }
+}

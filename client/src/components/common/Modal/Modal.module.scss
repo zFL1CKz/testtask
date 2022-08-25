@@ -1,0 +1,244 @@
+@import '../../../app/assets/styles/variables';
+
+/* Стилизация Modal Component */
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  opacity: 0;
+  pointer-events: none;
+
+  &.show {
+    pointer-events: all;
+    opacity: 1;
+    transition: opacity 0.2s ease-out;
+  }
+
+  &.hide {
+    transition: opacity 0.2s ease-in 0.5s;
+  }
+
+  &__header {
+    color: $text-color;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  &__desc {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: $text-color;
+  }
+
+  &__content {
+    padding: 18px 35px;
+    width: 100%;
+    max-width: 650px;
+    position: fixed;
+    left: 50%;
+    top: 150vh;
+    border-radius: 20px;
+    border: 1px solid $green-color;
+    background: #222124;
+    transform: translate(-50%, -50%);
+    animation: modalAnimInverted 0.5s ease-in;
+
+    &.active {
+      animation: modalAnim 0.5s ease-out;
+      top: 50%;
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    & label {
+      display: block;
+      font-family: inherit;
+      font-size: 18px;
+      margin: 0 0 5px 10px;
+      opacity: 0.5;
+    }
+
+    & .modal__inputs_checkbox__label {
+      opacity: 1;
+    }
+
+    & > input {
+      font-family: inherit;
+      font-size: 18px;
+      width: 100%;
+      background: #28282a;
+      border-radius: 6px;
+      padding: 12px 24px;
+      color: $text-color;
+      border-bottom: 1px solid $text-color;
+      margin-bottom: 20px;
+      transition: all 0.2s linear;
+
+      &:hover,
+      &:focus {
+        border-bottom-color: $green-color;
+      }
+    }
+
+    & > textarea {
+      resize: vertical;
+      width: 100%;
+      min-height: 80px;
+      max-height: calc(80px * 3);
+      height: 80px;
+      background: #28282a;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 18px;
+      color: $text-color;
+      padding: 12px 24px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid $text-color;
+      transition: border-bottom-color 0.2s linear;
+
+      &:hover,
+      &:focus {
+        border-bottom-color: $green-color;
+      }
+    }
+
+    & > input[type='date']::-webkit-calendar-picker-indicator {
+      filter: invert(100%);
+    }
+
+    &_select {
+      position: relative;
+
+      select {
+        appearance: none;
+        font-family: inherit;
+        font-size: 18px;
+        width: 100%;
+        background: #28282a;
+        border-radius: 6px;
+        padding: 12px 24px;
+        color: $text-color;
+        border-bottom: 1px solid $text-color;
+        margin-bottom: 20px;
+        transition: all 0.2s linear;
+
+        &:hover,
+        &:focus {
+          border-bottom-color: $green-color;
+        }
+
+        &:focus + .modal__inputs_arrow {
+          transform: rotate(45deg);
+          top: 44px;
+        }
+
+        option {
+          background: #28282a;
+        }
+      }
+    }
+
+    &_arrow {
+      position: absolute;
+      right: 30px;
+      top: 40px;
+      border: 1px solid $text-color;
+      border-bottom: transparent;
+      border-right: transparent;
+      background: transparent;
+      width: 8px;
+      height: 8px;
+      z-index: 100;
+      transform: rotate(-135deg);
+      transition: all 0.2s linear;
+      pointer-events: none;
+    }
+
+    &_checkbox {
+      position: relative;
+      margin-bottom: 20px;
+
+      input {
+        -webkit-appearance: none;
+        appearance: none;
+        position: absolute;
+
+        &:checked + label::before {
+          background: $green-color;
+        }
+      }
+
+      label {
+        display: block;
+        margin-left: 30px;
+        font-size: 18px;
+        font-family: inherit;
+
+        &::before {
+          content: '';
+          width: 20px;
+          height: 20px;
+          display: block;
+          border: 1px solid $green-color;
+          background: transparent;
+          position: absolute;
+          left: 0;
+          top: -1px;
+          transition: background 0.2s linear;
+        }
+      }
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__btn {
+    width: 40%;
+  }
+
+  &__error {
+    color: $error-color;
+    text-align: center;
+    margin: 15px 0;
+    font-family: inherit;
+    font-size: 18px;
+  }
+}
+
+@keyframes modalAnim {
+  0% {
+    top: 150vh;
+  }
+  60% {
+    top: 45%;
+  }
+  100% {
+    top: 50%;
+  }
+}
+
+@keyframes modalAnimInverted {
+  0% {
+    top: 50%;
+  }
+  60% {
+    top: 45%;
+  }
+  100% {
+    top: 150vh;
+  }
+}

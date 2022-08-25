@@ -1,28 +1,27 @@
-
 /** Перечесление полов */
-export enum EmployeeGender{
+export enum EmployeeGender {
   Мужской,
-  Женский
+  Женский,
 }
 
 /** Интерфейс сотрудника */
 export interface IEmployee {
   /** Идентификатор сотрудника */
-  id: number
+  id: number;
   /** Имя сотрудника */
-  firstname: string
+  firstName: string;
   /** Отчество сотрудника */
-  middlename: string
+  middleName: string;
   /** Фамилия сотрудника */
-  lastname: string
+  lastName: string;
   /** Дата рождения сотрудника */
-  dateOfBirth: string
+  dateOfBirth: string;
   /** Пол сотрудника */
-  genderId: EmployeeGender
+  genderId: EmployeeGender;
   /** Должность сотрудника */
-  post: string
+  post: string;
   /** Наличие водительского удостоверения у сотрудника */
-  isLicense: boolean
+  isLicense: boolean;
   /** Идентификатор подразделения сотрудника */
-  divisionId: number
+  divisionId: number;
 }

@@ -3,182 +3,182 @@
     {
       "id": 1,
       "title": "Отдел разработки",
-      "date": "16.08.2021",
+      "date": "2019-07-18T00:00:00.000Z",
       "desc": "Отдел разработки",
       "parentDivisionId": null
     },
     {
       "id": 19,
       "title": "C#",
-      "date": "16.09.2021",
+      "date": "2019-07-18T00:00:00.000Z",
       "desc": "C#",
       "parentDivisionId": 9
     },
     {
       "id": 20,
       "title": "Node.js",
-      "date": "18.07.2022",
+      "date": "2019-07-18T00:00:00.000Z",
       "desc": "Node.js",
       "parentDivisionId": 9
     },
     {
       "id": 14,
-      "date": "16.09.2021",
       "title": "Тестирование",
+      "date": "2021-04-05T00:00:00.000Z",
       "desc": "Тестирование",
       "parentDivisionId": 1
     },
     {
       "id": 6,
       "title": "Разработка игр",
-      "date": "05.04.2022",
+      "date": "2021-04-05T00:00:00.000Z",
       "desc": "Разработка игр",
       "parentDivisionId": 1
     },
     {
       "id": 7,
       "title": "Мобильная разработка",
-      "date": "12.10.2021",
+      "date": "2021-10-12T00:00:00.000Z",
       "desc": "Мобильная разработка",
       "parentDivisionId": 1
     },
     {
       "id": 2,
       "title": "Отдел кадров",
-      "date": "13.06.2021",
+      "date": "2021-06-13T00:00:00.000Z",
       "desc": "Отдел кадров",
       "parentDivisionId": null
     },
     {
       "id": 10,
       "title": "Учет персонала",
-      "date": "13.06.2021",
+      "date": "2021-06-13T00:00:00.000Z",
       "desc": "Учет персонала",
       "parentDivisionId": 2
     },
     {
       "id": 11,
       "title": "Подбор персонала",
-      "date": "13.06.2021",
+      "date": "2021-06-13T00:00:00.000Z",
       "desc": "Подбор персонала",
       "parentDivisionId": 2
     },
     {
       "id": 23,
       "title": "Обучение персонала",
-      "date": "13.06.2021",
+      "date": "2021-06-13T00:00:00.000Z",
       "desc": "Обучение персонала",
       "parentDivisionId": 2
     },
     {
       "id": 3,
       "title": "Отдел бухгалтерии",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел бухгалтерии",
       "parentDivisionId": null
     },
     {
       "id": 24,
       "title": "Производственный отдел",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Производственный отдел",
       "parentDivisionId": 3
     },
     {
       "id": 25,
       "title": "Финансовый отдел",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Финансовый отдел",
       "parentDivisionId": 3
     },
     {
       "id": 30,
       "title": "Отдел учета операций",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел учета операций по счетам",
       "parentDivisionId": 25
     },
     {
       "id": 31,
       "title": "Отдел финансовой статистики",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел финансовой статистики",
       "parentDivisionId": 25
     },
     {
       "id": 32,
       "title": "Отдел учета расходов",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел учета расходов",
       "parentDivisionId": 31
     },
     {
       "id": 33,
       "title": "Отдел учета задолженностей",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел учета задолженностей",
       "parentDivisionId": 31
     },
     {
       "id": 27,
       "title": "Отдел налогового учета",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел налогового отдел",
       "parentDivisionId": 3
     },
     {
       "id": 28,
       "title": "Отдел инвентаризации",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел инвентаризации",
       "parentDivisionId": 27
     },
     {
       "id": 29,
       "title": "Отдел отчетности",
-      "date": "27.02.2021",
+      "date": "2021-02-17T00:00:00.000Z",
       "desc": "Отдел отчетности",
       "parentDivisionId": 27
     },
     {
       "id": 4,
       "title": "Отдел рекламы",
-      "date": "16.02.2020",
+      "date": "2020-02-16T00:00:00.000Z",
       "desc": "Отдел рекламы",
       "parentDivisionId": null
     },
     {
       "id": 12,
       "title": "Интернет-маркетинг",
-      "date": "16.02.2020",
+      "date": "2020-02-16T00:00:00.000Z",
       "desc": "Интернет-маркетинг",
       "parentDivisionId": 4
     },
     {
       "id": 13,
       "title": "Рекламная аналитика",
-      "date": "16.02.2020",
+      "date": "2020-02-16T00:00:00.000Z",
       "desc": "Рекламная аналитика",
       "parentDivisionId": 4
     },
     {
       "id": 35,
       "title": "Frontend",
-      "date": "20.08.2022",
+      "date": "2021-08-20T00:00:00.000Z",
       "desc": "Frontend",
       "parentDivisionId": 37
     },
     {
       "id": 36,
       "title": "Backend",
-      "date": "20.08.2022",
+      "date": "2021-08-20T00:00:00.000Z",
       "desc": "",
       "parentDivisionId": 37
     },
     {
       "id": 37,
       "title": "Веб-разработка",
-      "date": "20.08.2022",
+      "date": "2021-08-20T00:00:00.000Z",
       "desc": "",
       "parentDivisionId": 1
     }
@@ -187,10 +187,10 @@
     {
       "id": 1,
       "divisionId": 36,
-      "dateOfBirth": "24.05.2001",
-      "lastname": "Маслов",
-      "firstname": "Вячеслав",
-      "middlename": "Егорович",
+      "dateOfBirth": "2000-11-01T00:00:00.000Z",
+      "lastName": "Маслов",
+      "firstName": "Вячеслав",
+      "middleName": "Егорович",
       "isLicense": true,
       "genderId": 0,
       "post": "Backend-разработчик"
@@ -198,10 +198,10 @@
     {
       "id": 2,
       "divisionId": 36,
-      "dateOfBirth": "20.08.1991",
-      "lastname": "Борисов",
-      "firstname": "Вадим",
-      "middlename": "Игоревич",
+      "dateOfBirth": "1998-08-25T00:00:00.000Z",
+      "lastName": "Борисов",
+      "firstName": "Вадим",
+      "middleName": "Игоревич",
       "isLicense": false,
       "genderId": 0,
       "post": "Backend-разработчик"
@@ -209,10 +209,10 @@
     {
       "id": 3,
       "divisionId": 36,
-      "dateOfBirth": "20.06.1989",
-      "lastname": "Калашников",
-      "firstname": "Кирилл",
-      "middlename": "Артёмович",
+      "dateOfBirth": "1978-06-14T00:00:00.000Z",
+      "lastName": "Калашников",
+      "firstName": "Кирилл",
+      "middleName": "Артёмович",
       "isLicense": false,
       "genderId": 0,
       "post": "Backend-разработчик"
@@ -220,10 +220,10 @@
     {
       "id": 4,
       "divisionId": 35,
-      "dateOfBirth": "19.09.1984",
-      "lastname": "Тетерин",
-      "firstname": "Тарас",
-      "middlename": "Михайлович",
+      "dateOfBirth": "1971-09-23T00:00:00.000Z",
+      "lastName": "Тетерин",
+      "firstName": "Тарас",
+      "middleName": "Михайлович",
       "isLicense": true,
       "genderId": 0,
       "post": "Frontend-разработчик"
@@ -231,10 +231,10 @@
     {
       "id": 5,
       "divisionId": 35,
-      "dateOfBirth": "03.08.1965",
-      "lastname": "Поляков",
-      "firstname": "Даниил",
-      "middlename": "Николаевич",
+      "dateOfBirth": "1984-05-26T00:00:00.000Z",
+      "lastName": "Поляков",
+      "firstName": "Даниил",
+      "middleName": "Николаевич",
       "isLicense": true,
       "genderId": 0,
       "post": "Frontend-разработчик"
@@ -242,10 +242,10 @@
     {
       "id": 6,
       "divisionId": 35,
-      "dateOfBirth": "05.03.1999",
-      "lastname": "Наумов",
-      "firstname": "Егор",
-      "middlename": "Ярославович",
+      "dateOfBirth": "1995-10-08T00:00:00.000Z",
+      "lastName": "Наумов",
+      "firstName": "Егор",
+      "middleName": "Ярославович",
       "isLicense": false,
       "genderId": 0,
       "post": "Frontend-разработчик"
@@ -253,10 +253,10 @@
     {
       "id": 7,
       "divisionId": 35,
-      "dateOfBirth": "14.07.1995",
-      "lastname": "Мухин",
-      "firstname": "Григорий",
-      "middlename": "Авдеевич",
+      "dateOfBirth": "1975-10-18T00:00:00.000Z",
+      "lastName": "Мухин",
+      "firstName": "Григорий",
+      "middleName": "Авдеевич",
       "isLicense": false,
       "genderId": 0,
       "post": "Frontend-разработчик"
@@ -264,32 +264,32 @@
     {
       "id": 8,
       "divisionId": 37,
-      "dateOfBirth": "31.05.1976",
-      "lastname": "Гришин",
-      "firstname": "Владимир",
-      "middlename": "Лаврентьевич",
-      "isLicense": true,
+      "dateOfBirth": "1968-09-23T00:00:00.000Z",
+      "lastName": "Гришин",
+      "firstName": "Владимир",
+      "middleName": "Лаврентьевич",
+      "isLicense": false,
       "genderId": 0,
       "post": "Team Lead"
     },
     {
       "id": 9,
       "divisionId": 37,
-      "dateOfBirth": "02.03.1977",
-      "lastname": "Ермаков",
-      "firstname": "Ярослав",
-      "middlename": "Федорович",
-      "isLicense": true,
+      "dateOfBirth": "2001-01-10T00:00:00.000Z",
+      "lastName": "Ермаков",
+      "firstName": "Ярослав",
+      "middleName": "Федорович",
+      "isLicense": false,
       "genderId": 0,
       "post": "Tech Lead"
     },
     {
       "id": 10,
       "divisionId": 3,
-      "dateOfBirth": "22.04.1972",
-      "lastname": "Елисеева",
-      "firstname": "Лунара",
-      "middlename": "Ярославовна",
+      "dateOfBirth": "1994-06-10T00:00:00.000Z",
+      "lastName": "Елисеева",
+      "firstName": "Лунара",
+      "middleName": "Ярославовна",
       "isLicense": false,
       "genderId": 1,
       "post": "Главный бухгалтер"
@@ -297,10 +297,10 @@
     {
       "id": 11,
       "divisionId": 3,
-      "dateOfBirth": "07.07.1969",
-      "lastname": "Гаврилова",
-      "firstname": "Элиза",
-      "middlename": "Мироновна",
+      "dateOfBirth": "2002-11-29T00:00:00.000Z",
+      "lastName": "Гаврилова",
+      "firstName": "Элиза",
+      "middleName": "Мироновна",
       "isLicense": false,
       "genderId": 1,
       "post": "Главный бухгалтер"
@@ -308,10 +308,10 @@
     {
       "id": 12,
       "divisionId": 30,
-      "dateOfBirth": "12.03.2003",
-      "lastname": "Евсеева",
-      "firstname": "Дарья",
-      "middlename": "Кирилловна",
+      "dateOfBirth": "1979-08-16T00:00:00.000Z",
+      "lastName": "Евсеева",
+      "firstName": "Дарья",
+      "middleName": "Кирилловна",
       "isLicense": true,
       "genderId": 1,
       "post": "Бухгалтер"
@@ -319,10 +319,10 @@
     {
       "id": 13,
       "divisionId": 31,
-      "dateOfBirth": "24.06.1991",
-      "lastname": "Гордеева",
-      "firstname": "Доминика",
-      "middlename": "Ростиславовна",
+      "dateOfBirth": "1971-31-12T00:00:00.000Z",
+      "lastName": "Гордеева",
+      "firstName": "Доминика",
+      "middleName": "Ростиславовна",
       "isLicense": true,
       "genderId": 1,
       "post": ""
@@ -330,10 +330,10 @@
     {
       "id": 14,
       "divisionId": 32,
-      "dateOfBirth": "29.10.1988",
-      "lastname": "Сысоева",
-      "firstname": "Алёна",
-      "middlename": "Давидовна",
+      "dateOfBirth": "1978-01-05T00:00:00.000Z",
+      "lastName": "Сысоева",
+      "firstName": "Алёна",
+      "middleName": "Давидовна",
       "isLicense": true,
       "genderId": 1,
       "post": ""
@@ -341,10 +341,10 @@
     {
       "id": 15,
       "divisionId": 33,
-      "dateOfBirth": "04.02.1975",
-      "lastname": "Беляева",
-      "firstname": "Гаянэ",
-      "middlename": "Романовна",
+      "dateOfBirth": "1982-03-17T00:00:00.000Z",
+      "lastName": "Беляева",
+      "firstName": "Гаянэ",
+      "middleName": "Романовна",
       "isLicense": false,
       "genderId": 1,
       "post": "Бухгалтер"
@@ -352,13 +352,13 @@
     {
       "id": 16,
       "divisionId": 1,
-      "dateOfBirth": "12.03.2002",
-      "lastname": "Тест",
-      "firstname": "Тест",
-      "middlename": "",
-      "isLicense": false,
+      "dateOfBirth": "1974-05-12T00:00:00.000Z",
+      "lastName": "Кириенко",
+      "firstName": "Михаил",
+      "middleName": "Петрович",
+      "isLicense": true,
       "genderId": 0,
-      "post": ""
+      "post": "Менеджер разработки"
     }
   ]
 }

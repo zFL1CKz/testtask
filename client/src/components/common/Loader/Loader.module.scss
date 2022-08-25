@@ -1,6 +1,8 @@
+@import '../../../app/assets/styles/variables';
+
 /* Стилизация Loader Component */
 
-.loader__wrapper{
+.loader__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,15 +10,17 @@
   height: 100%;
   position: fixed;
   z-index: 50;
+
+  &.loader__content {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 8px solid $dark-green-color;
+    border-top-color: $green-color;
+    animation: loader 1.25s linear infinite;
+  }
 }
-.loader__wrapper .loader__content{
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 8px solid var(--dark-green-color);
-  border-top-color: var(--green-color);
-  animation: loader 1.25s linear infinite;
-}
+
 @keyframes loader {
   50% {
     transform: rotate(60deg);

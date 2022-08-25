@@ -1,10 +1,10 @@
-import {IEmployee} from './IEmployee'
-import {IDivision} from './IDivision'
+import { IEmployee } from './IEmployee';
+import { IDivision } from './IDivision';
 
 /** Интерфейс, объединяющий сотрудников и их подразделение */
-export interface IDivisionEmployeePair{
+export interface IDivisionEmployeePair {
   /** Сотрудники */
-  employees: IEmployee[]
+  employees: IEmployee[];
   /** Подразделение */
-  division: IDivision
+  division: IDivision;
 }

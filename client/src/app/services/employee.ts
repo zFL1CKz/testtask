@@ -1,52 +1,52 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/dist/query/react'
-import {IEmployee} from '../models/IEmployee'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
+import { IEmployee } from '../models/IEmployee';
 
 /** API для сотрудников */
 export const employeeAPI = createApi({
   reducerPath: 'employeeAPI',
-  baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:5000'}),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL }),
   tagTypes: ['Employee'],
   endpoints: build => ({
     /** Получение всех сотрудников */
     getAllEmployees: build.query<IEmployee[], null>({
       query: () => ({
-        url: '/employee'
+        url: '/employee',
       }),
-      providesTags: result => ['Employee']
+      providesTags: result => ['Employee'],
     }),
     /** Добавление нового сотрудника */
     addNewEmployee: build.mutation<IEmployee, IEmployee>({
       query: employee => ({
         url: '/employee',
         method: 'POST',
-        body: employee
+        body: employee,
       }),
-      invalidatesTags: ['Employee']
+      invalidatesTags: ['Employee'],
     }),
     /** Изменение сотрудника */
     updateEmployee: build.mutation<IEmployee, IEmployee>({
       query: employee => ({
         url: `/employee/${employee.id}`,
         method: 'PUT',
-        body: employee
+        body: employee,
       }),
-      invalidatesTags: ['Employee']
+      invalidatesTags: ['Employee'],
     }),
     /** Удаление сотрудника */
     deleteEmployee: build.mutation<IEmployee, IEmployee>({
       query: employee => ({
         url: `/employee/${employee.id}`,
         method: 'DELETE',
-        body: employee
+        body: employee,
       }),
-      invalidatesTags: ['Employee']
+      invalidatesTags: ['Employee'],
     }),
-  })
-})
+  }),
+});
 
 export const {
   useAddNewEmployeeMutation,
   useDeleteEmployeeMutation,
   useUpdateEmployeeMutation,
-  useGetAllEmployeesQuery
-} = employeeAPI
+  useGetAllEmployeesQuery,
+} = employeeAPI;

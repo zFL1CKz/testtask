@@ -1,0 +1,35 @@
+@import '../../../app/assets/styles/variables';
+
+/* Стилизация Button Component */
+
+button.button {
+  font-family: inherit;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 18px 35px;
+  transition: all 0.2s linear;
+
+  &.secondary {
+    color: $green-color;
+    background: $text-color;
+    border: 2px solid $text-color;
+
+    &:hover {
+      background: transparent;
+      color: $text-color;
+    }
+  }
+
+  &.primary {
+    color: $text-color;
+    background: $green-color;
+    border: 2px solid $green-color;
+
+    &:hover {
+      background: transparent;
+      color: $green-color;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Для запуска серверной части необходимо перейти в папку server **(cd server)** и выполнить команду **json-server --watch db.json --port 5000**",
+  "main": "index.js",
+  "scripts": {
+    "server": "json-server db.json --port 5000"
+  },
+  "keywords": [],
+  "author": "zFL1CKz <dimakukharev2002@yandex.ru>",
+  "license": "ISC"
+}

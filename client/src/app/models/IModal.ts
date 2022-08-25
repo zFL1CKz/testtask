@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 /** Интерфейс модального окна */
 export interface IModal {
   /** Состояние модального окна */
-  isActive: boolean
+  isActive: boolean;
   /** Функция, меняющая состояние окна */
-  setActive: (active: boolean) => void
+  setActive: (active: boolean) => void;
   /** Вложенная разметка */
-  children?: React.ReactNode | React.ReactElement
+  children?: React.ReactNode | React.ReactElement;
 }

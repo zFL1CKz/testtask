@@ -1,17 +1,22 @@
-import React, {FC, memo, useState} from 'react'
-import DivisionItem from './DivisionItem'
-import Button, {ButtonVariant} from '../../ui/Button'
-import useTree from '../../../hooks/useTree'
-import ModalDivisionForm from '../Modals/ModalDivisionForm'
-import {useAppDispatch} from '../../../hooks/redux'
-import {resetCurrentDivision} from '../../../app/features/DivisionSlice'
-import '../../../app/assets/styles/components.css'
+import React, { FC, memo, useState } from 'react';
+import DivisionItem from './DivisionItem';
+import { useAppDispatch } from '../../../hooks/redux';
+import { resetCurrentDivision } from '../../../app/features/DivisionSlice';
+import useTree from '../../../hooks/useTree';
+import Modal from '../../common/Modal/Modal';
+import ModalDivisionForm from '../Modals/ModalDivisionForm';
+import ModalDeleteDivision from '../Modals/ModalDeleteDivision';
+import Button, { ButtonVariant } from '../../common/Button/Button';
+import './Divisions.scss';
 
 /** Список всех подразделений */
 const DivisionContainer: FC = memo(() => {
-  const divisions = useTree(null).divisions
-  const dispatch = useAppDispatch()
-  const [modalFormDivisionActive, setModalFormDivisionActive] = useState<boolean>(false)
+  const [isDelete, setIsDelete] = useState<boolean>(false);
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
+
+  const dispatch = useAppDispatch();
+
+  const divisions = useTree(null).divisions;
 
   return (
     <>
@@ -19,8 +24,22 @@ const DivisionContainer: FC = memo(() => {
         <div>
           <h1 className='division__title'>Подразделения</h1>
           <div className='division__wrapper'>
-            {divisions?.map(division => division.parentDivisionId === null &&
-                <DivisionItem key={division.id} {...division} />
+            {divisions?.map(
+              division =>
+                division.parentDivisionId === null && (
+                  <DivisionItem
+                    key={division.id}
+                    division={division}
+                    update={() => {
+                      setIsDelete(false);
+                      setIsModalActive(true);
+                    }}
+                    remove={() => {
+                      setIsDelete(true);
+                      setIsModalActive(true);
+                    }}
+                  />
+                )
             )}
           </div>
         </div>
@@ -29,16 +48,28 @@ const DivisionContainer: FC = memo(() => {
           content='Добавить подразделение'
           className='division__btn'
           onClick={() => {
-            setModalFormDivisionActive(true)
-            dispatch(resetCurrentDivision())
-          }
-        }/>
+            setIsDelete(false);
+            setIsModalActive(true);
+            dispatch(resetCurrentDivision());
+          }}
+        />
       </div>
 
-      <ModalDivisionForm isActive={modalFormDivisionActive} setActive={setModalFormDivisionActive}/>
+      <Modal isActive={isModalActive} setActive={setIsModalActive}>
+        {isDelete ? (
+          <ModalDeleteDivision
+            isActive={isModalActive}
+            setActive={setIsModalActive}
+          />
+        ) : (
+          <ModalDivisionForm
+            isActive={isModalActive}
+            setActive={setIsModalActive}
+          />
+        )}
+      </Modal>
     </>
+  );
+});
 
-  )
-})
-
-export default DivisionContainer
+export default DivisionContainer;
