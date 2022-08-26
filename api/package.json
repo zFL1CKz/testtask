@@ -8,5 +8,8 @@
   },
   "keywords": [],
   "author": "zFL1CKz <dimakukharev2002@yandex.ru>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
 }
