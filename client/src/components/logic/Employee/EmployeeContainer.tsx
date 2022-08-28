@@ -59,6 +59,7 @@ const EmployeeContainer: FC = () => {
         className='employee__btn'
         onClick={() => {
           dispatch(resetCurrentEmployee());
+          setIsDelete(false);
           setIsModalActive(true);
         }}
       />
