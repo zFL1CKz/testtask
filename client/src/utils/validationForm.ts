@@ -9,7 +9,7 @@ interface IValidate {
 
 /** Функция для проверки введенной даты с сегодняшней */
 function isCorrectDate(date: Date): boolean {
-  if (new Date(date) > new Date()) return false;
+  if (new Date(date).getDate() > new Date().getDate()) return false;
   return true;
 }
 
