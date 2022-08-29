@@ -16,11 +16,11 @@
   &.show {
     pointer-events: all;
     opacity: 1;
-    transition: opacity 0.2s ease-out;
+    transition: opacity 0.15s ease-out;
   }
 
   &.hide {
-    transition: opacity 0.2s ease-in 0.5s;
+    transition: opacity 0.15s ease-in 0.25s;
   }
 
   &__header {
@@ -48,10 +48,9 @@
     border: 1px solid $green-color;
     background: #222124;
     transform: translate(-50%, -50%);
-    animation: modalAnimInverted 0.5s ease-in;
+    transition: top .25s linear;
 
     &.active {
-      animation: modalAnim 0.5s ease-out;
       top: 50%;
     }
   }
@@ -216,29 +215,5 @@
     margin: 15px 0;
     font-family: inherit;
     font-size: 18px;
-  }
-}
-
-@keyframes modalAnim {
-  0% {
-    top: 150vh;
-  }
-  60% {
-    top: 45%;
-  }
-  100% {
-    top: 50%;
-  }
-}
-
-@keyframes modalAnimInverted {
-  0% {
-    top: 50%;
-  }
-  60% {
-    top: 45%;
-  }
-  100% {
-    top: 150vh;
   }
 }

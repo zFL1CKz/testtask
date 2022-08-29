@@ -48,9 +48,9 @@ const DivisionContainer: FC = memo(() => {
           content='Добавить подразделение'
           className='division__btn'
           onClick={() => {
+            dispatch(resetCurrentDivision());
             setIsDelete(false);
             setIsModalActive(true);
-            dispatch(resetCurrentDivision());
           }}
         />
       </div>

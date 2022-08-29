@@ -12,14 +12,14 @@
       "title": "C#",
       "date": "2019-07-18T00:00:00.000Z",
       "desc": "C#",
-      "parentDivisionId": 9
+      "parentDivisionId": 36
     },
     {
       "id": 20,
       "title": "Node.js",
       "date": "2019-07-18T00:00:00.000Z",
       "desc": "Node.js",
-      "parentDivisionId": 9
+      "parentDivisionId": 36
     },
     {
       "id": 14,
@@ -172,7 +172,7 @@
       "id": 36,
       "title": "Backend",
       "date": "2021-08-20T00:00:00.000Z",
-      "desc": "",
+      "desc": "Backend",
       "parentDivisionId": 37
     },
     {
@@ -181,6 +181,34 @@
       "date": "2021-08-20T00:00:00.000Z",
       "desc": "",
       "parentDivisionId": 1
+    },
+    {
+      "id": 38,
+      "title": "React",
+      "date": "2020-08-30T00:00:00.000Z",
+      "desc": "",
+      "parentDivisionId": 35
+    },
+    {
+      "id": 39,
+      "title": "Angular",
+      "date": "2020-08-30T00:00:00.000Z",
+      "desc": "",
+      "parentDivisionId": 35
+    },
+    {
+      "id": 40,
+      "title": "Vue",
+      "date": "2020-08-30T00:00:00.000Z",
+      "desc": "",
+      "parentDivisionId": 35
+    },
+    {
+      "id": 41,
+      "title": "Svelte",
+      "date": "2020-08-30T00:00:00.000Z",
+      "desc": "",
+      "parentDivisionId": 35
     }
   ],
   "employee": [
