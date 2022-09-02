@@ -44,6 +44,18 @@ const ModalDivisionForm: FC<IModal> = memo(({ setActive, division }) => {
     id: 0,
     parentDivisionId: null,
   });
+
+  /** Функция обнуления состояния формы */
+  const resetForm = useCallback(() => {
+    setForm({
+      title: '',
+      date: '',
+      desc: '',
+      id: 0,
+      parentDivisionId: null,
+    });
+  }, []);
+
   /** Инициализация состояния формы по дефолту */
   useEffect(() => {
     setFormError('');
@@ -56,7 +68,7 @@ const ModalDivisionForm: FC<IModal> = memo(({ setActive, division }) => {
         ? division.parentDivisionId
         : selectedDivision.id || null,
     });
-  }, [division]);
+  }, [division, selectedDivision, resetForm]);
 
   /** Функция изменения текстовых полей формы */
   const handleFormChange = ({
@@ -72,17 +84,6 @@ const ModalDivisionForm: FC<IModal> = memo(({ setActive, division }) => {
       [e.target.name]: Number(e.target.value),
     }));
   };
-
-  /** Функция обнуления состояния формы */
-  const resetForm = useCallback(() => {
-    setForm({
-      title: '',
-      date: '',
-      desc: '',
-      id: 0,
-      parentDivisionId: null,
-    });
-  }, []);
 
   /** Функция применения изменений полей формы */
   const handleSubmitForm = async () => {

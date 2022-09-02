@@ -1,24 +1,25 @@
 import React, { FC } from 'react';
-import EmployeeContainer from './components/logic/Employee/EmployeeContainer';
 import DivisionContainer from './components/logic/Divisions/DivisionContainer';
-import { useAppSelector } from './hooks/redux';
-import DivisionInfo from './components/logic/Divisions/DivisionInfo';
 import useTree from './hooks/useTree';
 import Loader from './components/common/Loader/Loader';
 import Wrapper from './components/common/Wrapper/Wrapper';
-import classes from './app/assets/styles/App.module.scss';
+import useEmployees from './hooks/useEmployees';
+import Container from './components/common/Container/Container';
+import './app/assets/styles/App.module.scss';
 
 const App: FC = () => {
-  const isLoading = !!useTree(null).divisions;
+  const isLoadingDivisions: boolean = !!useTree(null).divisions;
+  const isLoadingEmployees: boolean = !!useEmployees(null).employees;
+  const isLoading: boolean = isLoadingDivisions && isLoadingEmployees;
 
   if (!isLoading) {
     return <Loader />;
   }
   return (
-    <div className={classes.container}>
+    <Container>
       <DivisionContainer />
       <Wrapper />
-    </div>
+    </Container>
   );
 };
 

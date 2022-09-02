@@ -10,15 +10,16 @@
   height: 100%;
   position: fixed;
   z-index: 50;
+  background: $bg-color;
+}
 
-  &.loader__content {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 8px solid $dark-green-color;
-    border-top-color: $green-color;
-    animation: loader 1.25s linear infinite;
-  }
+.loader__content {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 8px solid $dark-green-color;
+  border-top-color: $green-color;
+  animation: loader 1.25s linear infinite;
 }
 
 @keyframes loader {

@@ -15,7 +15,10 @@ function validationDivisionForm(form: IDivision): IValidate {
     errorMessage = 'Поле "Название" является обязательным!';
   else if (isNaN(Date.parse(form.date)))
     errorMessage = 'Поле "Дата создания" является обязательным!';
-  else if (new Date(form.date).toISOString() > new Date().toISOString())
+  else if (
+    new Date(form.date).toISOString() > new Date().toISOString() ||
+    form.date.length > 10
+  )
     errorMessage = 'Некорректная дата создания';
 
   return {
