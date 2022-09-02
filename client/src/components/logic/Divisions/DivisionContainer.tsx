@@ -1,12 +1,11 @@
 import React, { FC, memo, useState } from 'react';
-import DivisionItem from './DivisionItem';
-import { useAppDispatch } from '../../../hooks/redux';
-import { resetCurrentDivision } from '../../../app/features/DivisionSlice';
 import useTree from '../../../hooks/useTree';
+import DivisionItem from './DivisionItem';
 import Modal from '../../common/Modal/Modal';
 import ModalDivisionForm from '../Modals/ModalDivisionForm';
 import ModalDeleteDivision from '../Modals/ModalDeleteDivision';
 import Button, { ButtonVariant } from '../../common/Button/Button';
+import { IDivision } from '../../../app/models/IDivision';
 import './Divisions.scss';
 
 /** Список всех подразделений */
@@ -14,7 +13,7 @@ const DivisionContainer: FC = memo(() => {
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
 
-  const dispatch = useAppDispatch();
+  const [selectedDivision, setSelectedDivision] = useState<IDivision>();
 
   const divisions = useTree(null).divisions;
 
@@ -30,11 +29,13 @@ const DivisionContainer: FC = memo(() => {
                   <DivisionItem
                     key={division.id}
                     division={division}
-                    update={() => {
+                    update={division => {
+                      setSelectedDivision(division);
                       setIsDelete(false);
                       setIsModalActive(true);
                     }}
-                    remove={() => {
+                    remove={division => {
+                      setSelectedDivision(division);
                       setIsDelete(true);
                       setIsModalActive(true);
                     }}
@@ -48,7 +49,7 @@ const DivisionContainer: FC = memo(() => {
           content='Добавить подразделение'
           className='division__btn'
           onClick={() => {
-            dispatch(resetCurrentDivision());
+            setSelectedDivision(undefined);
             setIsDelete(false);
             setIsModalActive(true);
           }}
@@ -60,11 +61,13 @@ const DivisionContainer: FC = memo(() => {
           <ModalDeleteDivision
             isActive={isModalActive}
             setActive={setIsModalActive}
+            division={selectedDivision}
           />
         ) : (
           <ModalDivisionForm
             isActive={isModalActive}
             setActive={setIsModalActive}
+            division={selectedDivision}
           />
         )}
       </Modal>

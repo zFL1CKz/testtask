@@ -19,8 +19,8 @@ const EmployeeContainer: FC = () => {
   const [isDelete, setIsDelete] = useState<boolean>(false);
 
   const division = useAppSelector(state => state.division);
-  const nestedDivisions = useTree(division).allNestedDivisions;
-  const employeesFromDivision = useEmployees(division).employeesFromDivision;
+  const nestedDivisions = useTree(division.id).allNestedDivisions;
+  const employeesFromDivision = useEmployees(division.id).employeesFromDivision;
   const employees = useEmployees(null).employees;
   const [divisionEmployeePair, setDivisionEmployeePair] = useState<
     IDivisionEmployeePair[]

@@ -20,18 +20,22 @@ import useTree from '../../../hooks/useTree';
 import Button, { ButtonVariant } from '../../common/Button/Button';
 import classes from '../../common/Modal/Modal.module.scss';
 
-const ModalDivisionForm: FC<IModal> = memo(({ isActive, setActive }) => {
-  const division = useAppSelector(state => state.division);
-  let allDivisions = useTree(null).divisions;
-  const nestedDivisions = useTree(division).allNestedDivisions;
+const ModalDivisionForm: FC<IModal> = memo(({ setActive, division }) => {
+  const selectedDivision = useAppSelector(state => state.division);
+  let divisions = useTree(null).divisions;
+  const nestedDivisions = useTree(
+    division ? division.id : null
+  )?.allNestedDivisions;
+
+  divisions = divisions?.filter(
+    d => !nestedDivisions?.includes(d) && division?.id !== d.id
+  );
+
   const [addNewDivision] = useAddNewDivisionMutation();
   const [updateDivision] = useUpdateDivisionMutation();
   const dispatch = useAppDispatch();
 
   const [formError, setFormError] = useState<string>('');
-  allDivisions = allDivisions?.filter(
-    e => !nestedDivisions.includes(e) && division.id !== e.id
-  );
 
   const [form, setForm] = useState<IDivision>({
     title: '',
@@ -40,18 +44,19 @@ const ModalDivisionForm: FC<IModal> = memo(({ isActive, setActive }) => {
     id: 0,
     parentDivisionId: null,
   });
-
   /** Инициализация состояния формы по дефолту */
   useEffect(() => {
     setFormError('');
     setForm({
-      title: division.id !== 0 ? division.title : '',
-      date: division.id !== 0 ? convertedDateToInput(division.date) : '',
-      desc: division.id !== 0 ? division.desc : '',
-      id: division.id !== 0 ? division.id : 0,
-      parentDivisionId: division.id !== 0 ? division.parentDivisionId : null,
+      title: division ? division.title : '',
+      date: division ? convertedDateToInput(division.date) : '',
+      desc: division ? division.desc : '',
+      id: division ? division.id : 0,
+      parentDivisionId: division
+        ? division.parentDivisionId
+        : selectedDivision.id || null,
     });
-  }, [division, isActive]);
+  }, [division]);
 
   /** Функция изменения текстовых полей формы */
   const handleFormChange = ({
@@ -82,7 +87,6 @@ const ModalDivisionForm: FC<IModal> = memo(({ isActive, setActive }) => {
   /** Функция применения изменений полей формы */
   const handleSubmitForm = async () => {
     setFormError('');
-
     if (validationForm.validationDivisionForm(form).result) {
       const resultForm: IDivision = {
         id: form.id,
@@ -92,15 +96,17 @@ const ModalDivisionForm: FC<IModal> = memo(({ isActive, setActive }) => {
         parentDivisionId:
           form.parentDivisionId === 0 ? null : form.parentDivisionId,
       };
-      if (division.id === 0) {
-        const division = await addNewDivision({ ...resultForm } as IDivision);
-        // @ts-ignore
-        dispatch(setCurrentDivision(division.data as IDivision));
-        resetForm();
+      if (division) {
+        const updatedDivision = await updateDivision({
+          ...resultForm,
+        } as IDivision);
+        if (selectedDivision.id === division.id) {
+          //@ts-ignore
+          dispatch(setCurrentDivision(updatedDivision.data as IDivision));
+        }
       } else {
-        const division = await updateDivision({ ...resultForm } as IDivision);
-        // @ts-ignore
-        dispatch(setCurrentDivision(division.data as IDivision));
+        await addNewDivision({ ...resultForm } as IDivision);
+        resetForm();
       }
       setActive(false);
     } else {
@@ -111,7 +117,7 @@ const ModalDivisionForm: FC<IModal> = memo(({ isActive, setActive }) => {
   return (
     <>
       <h1 className={classes.modal__header}>
-        {division.id !== 0 ? 'Изменить' : 'Добавить'} подразделение
+        {division ? 'Изменить' : 'Добавить'} подразделение
       </h1>
 
       <div className={classes.modal__inputs}>
@@ -143,17 +149,18 @@ const ModalDivisionForm: FC<IModal> = memo(({ isActive, setActive }) => {
           <select
             name='parentDivisionId'
             id='parentDivisionId'
-            value={form.parentDivisionId ?? 0}
+            value={form.parentDivisionId || 0}
             onChange={handleSelectChange}
           >
             <option value={0}>Нет родительского подразделения</option>
-            {allDivisions
-              ?.sort((a, b) => a.title.localeCompare(b.title))
-              .map(division => (
-                <option key={division.id} value={division.id}>
-                  {division.title}
-                </option>
-              ))}
+            {divisions &&
+              [...divisions]
+                ?.sort((a, b) => a.title.localeCompare(b.title))
+                .map(division => (
+                  <option key={division.id} value={division.id}>
+                    {division.title}
+                  </option>
+                ))}
           </select>
           <div className={classes.modal__inputs_arrow}></div>
         </div>
@@ -167,7 +174,7 @@ const ModalDivisionForm: FC<IModal> = memo(({ isActive, setActive }) => {
           <Button
             className={classes.modal__btn}
             variant={ButtonVariant.primary}
-            content={division.id !== 0 ? 'Изменить' : 'Добавить'}
+            content={division ? 'Изменить' : 'Добавить'}
             onClick={handleSubmitForm}
           />
         </div>

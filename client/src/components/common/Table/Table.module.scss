@@ -54,8 +54,10 @@
     }
 
     td img {
-      width: 20px;
-      height: 20px;
+      min-width: 18px;
+      min-height: 18px;
+      max-width: 18px;
+      max-height: 18px;
       margin: 0 auto;
       cursor: pointer;
     }

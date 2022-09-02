@@ -9,13 +9,13 @@ interface ITree {
 }
 
 /** Хук для работы с подразделениями */
-export default function useTree(division: IDivision | null): ITree {
+export default function useTree(divisionId: number | null): ITree {
   const { data: divisions } = useGetAllDivisionsQuery(null);
   const allNestedDivisions = [] as IDivision[];
 
   const subDivisions =
     divisions?.filter(
-      div => div.parentDivisionId === division?.id && recursive(div)
+      div => div.parentDivisionId === divisionId && recursive(div)
     ) ?? [];
 
   function recursive(div: IDivision): IDivision[] {

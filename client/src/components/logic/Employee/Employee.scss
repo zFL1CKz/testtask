@@ -1,22 +1,22 @@
-.employee{
+.employee {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  &__btn{
+  &__btn {
     width: fit-content;
     margin-bottom: 25px;
   }
 
-  &__item{
+  &__item {
     margin-bottom: 50px;
 
-    &:last-child{
+    &:last-child {
       margin-bottom: 0;
     }
   }
 
-  &__title{
+  &__title {
     width: 100%;
     text-align: center;
     color: #ffffff;

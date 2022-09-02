@@ -1,11 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { IModal } from '../../../app/models/IModal';
 import Button, { ButtonVariant } from '../../common/Button/Button';
 import { IDivision } from '../../../app/models/IDivision';
-import {
-  resetCurrentDivision,
-  setCurrentDivision,
-} from '../../../app/features/DivisionSlice';
+import { resetCurrentDivision } from '../../../app/features/DivisionSlice';
 import { useDeleteEmployeeMutation } from '../../../app/services/employee';
 import {
   useDeleteDivisionMutation,
@@ -16,26 +13,27 @@ import useTree from '../../../hooks/useTree';
 import useEmployees from '../../../hooks/useEmployees';
 import classes from '../../common/Modal/Modal.module.scss';
 
-const ModalDeleteDivision: FC<IModal> = ({ isActive, setActive }) => {
-  const division = useAppSelector(state => state.division);
-  const divisions = useTree(null).divisions;
-  const subDivisions = useTree(division).subDivisions;
-  const employees = useEmployees(division).employeesFromDivision;
+const ModalDeleteDivision: FC<IModal> = memo(({ setActive, division }) => {
+  const selectedDivision = useAppSelector(state => state.division);
+  const subDivisions = useTree(division ? division.id : null).subDivisions;
+  const employees = useEmployees(
+    division ? division.id : null
+  ).employeesFromDivision;
+
+  const dispatch = useAppDispatch();
 
   const [deleteEmployee] = useDeleteEmployeeMutation();
   const [deleteDivision] = useDeleteDivisionMutation();
   const [updateDivision] = useUpdateDivisionMutation();
 
-  const dispatch = useAppDispatch();
-
   /** Изменение родтельского идентификатора всех вложенных подразделений */
-  const removeSubDivisions = async (subDivision: IDivision) => {
+  const changeParentIdForSubDivisions = async (subDivision: IDivision) => {
     const newDivision: IDivision = {
       id: subDivision.id,
       date: subDivision.date,
       title: subDivision.title,
       desc: subDivision.desc,
-      parentDivisionId: division.parentDivisionId,
+      parentDivisionId: division?.parentDivisionId || null,
     };
     await updateDivision({ ...newDivision } as IDivision);
   };
@@ -44,24 +42,16 @@ const ModalDeleteDivision: FC<IModal> = ({ isActive, setActive }) => {
   const handleRemove = async () => {
     if (subDivisions.length > 0) {
       subDivisions.map(
-        async subDivision => await removeSubDivisions(subDivision)
+        async subDivision => await changeParentIdForSubDivisions(subDivision)
       );
     }
     if (employees && employees.length > 0) {
       employees.map(async employee => await deleteEmployee(employee));
     }
-    if (division.parentDivisionId) {
-      dispatch(
-        setCurrentDivision(
-          divisions?.filter(
-            div => div.id === division.parentDivisionId
-          )[0] as IDivision
-        )
-      );
-    } else {
-      dispatch(resetCurrentDivision());
+    if (division) {
+      await deleteDivision(division);
     }
-    await deleteDivision(division);
+    if (division?.id === selectedDivision.id) dispatch(resetCurrentDivision());
     setActive(false);
   };
   return (
@@ -87,6 +77,6 @@ const ModalDeleteDivision: FC<IModal> = ({ isActive, setActive }) => {
       </div>
     </>
   );
-};
+});
 
 export default ModalDeleteDivision;

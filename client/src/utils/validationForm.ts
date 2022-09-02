@@ -7,32 +7,20 @@ interface IValidate {
   error: string;
 }
 
-/** Функция для проверки введенной даты с сегодняшней */
-function isCorrectDate(date: Date): boolean {
-  if (new Date(date).getDate() > new Date().getDate()) return false;
-  return true;
-}
-
 /** Функция для валидации формы подразделений */
 function validationDivisionForm(form: IDivision): IValidate {
+  let errorMessage: string = '';
+
   if (form.title.trim().length <= 0)
-    return {
-      result: false,
-      error: 'Поле "Название" является обязательным!',
-    };
-  if (isNaN(Date.parse(form.date)))
-    return {
-      result: false,
-      error: 'Поле "Дата создания" является обязательным!',
-    };
-  if (!isCorrectDate(new Date(form.date)))
-    return {
-      result: false,
-      error: 'Некорректная дата создания',
-    };
+    errorMessage = 'Поле "Название" является обязательным!';
+  else if (isNaN(Date.parse(form.date)))
+    errorMessage = 'Поле "Дата создания" является обязательным!';
+  else if (new Date(form.date).toISOString() > new Date().toISOString())
+    errorMessage = 'Некорректная дата создания';
+
   return {
-    result: true,
-    error: '',
+    result: !!!errorMessage,
+    error: errorMessage,
   };
 }
 
@@ -45,56 +33,27 @@ function isEighteenYears(birthDate: Date): boolean {
   );
   return tempDate <= new Date();
 }
-/** Функция для определения возраста сотрудника более 70 лет */
-function isHundredYears(birthDate: Date): boolean {
-  const tempDate = new Date(
-    birthDate.getFullYear() + 100,
-    birthDate.getMonth(),
-    birthDate.getDate()
-  );
-  return tempDate <= new Date();
-}
 
 /** Функция для валидации формы сотрудников */
 function validationEmployeeForm(form: IEmployee): IValidate {
+  let errorMessage: string = '';
+
   if (form.lastName.trim().length <= 0)
-    return {
-      result: false,
-      error: 'Поле "Фамилия" является обязательным!',
-    };
-  if (form.firstName.trim().length <= 0)
-    return {
-      result: false,
-      error: 'Поле "Имя" является обязательным!',
-    };
-  if (isNaN(Date.parse(form.dateOfBirth)))
-    return {
-      result: false,
-      error: 'Поле "Дата рождения" является обязательным!',
-    };
-  if (!isCorrectDate(new Date(form.dateOfBirth)))
-    return {
-      result: false,
-      error: 'Некорректная дата рождения',
-    };
-  if (!isEighteenYears(new Date(form.dateOfBirth)))
-    return {
-      result: false,
-      error: 'Возраст не может быть меньше 18-ти лет!',
-    };
-  if (isHundredYears(new Date(form.dateOfBirth)))
-    return {
-      result: false,
-      error: 'Возраст не может быть больше 100 лет!',
-    };
-  if (form.divisionId === 0)
-    return {
-      result: false,
-      error: 'Поле "Подразделение" является обязательным!',
-    };
+    errorMessage = 'Поле "Фамилия" является обязательным!';
+  else if (form.firstName.trim().length <= 0)
+    errorMessage = 'Поле "Имя" является обязательным!';
+  else if (isNaN(Date.parse(form.dateOfBirth)))
+    errorMessage = 'Поле "Дата рождения" является обязательным!';
+  else if (new Date(form.dateOfBirth).toISOString() > new Date().toISOString())
+    errorMessage = 'Некорректная дата рождения';
+  else if (!isEighteenYears(new Date(form.dateOfBirth)))
+    errorMessage = 'Возраст не может быть меньше 18-ти лет!';
+  else if (form.divisionId === 0)
+    errorMessage = 'Поле "Подразделение" является обязательным!';
+
   return {
-    result: true,
-    error: '',
+    result: !!!errorMessage,
+    error: errorMessage,
   };
 }
 

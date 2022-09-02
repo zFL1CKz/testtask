@@ -1,0 +1,16 @@
+/* Стилизация App Component & обнуление дефолтных стилей браузера */
+
+@import './src/app/assets/fonts/Montserrat/montserrat';
+@import 'Reset';
+@import 'variables';
+
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: $bg-color;
+  color: $text-color;
+  font-size: 18px;
+}
+.container {
+  display: flex;
+}

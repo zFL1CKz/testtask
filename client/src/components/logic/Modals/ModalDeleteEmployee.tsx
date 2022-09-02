@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import Button, { ButtonVariant } from '../../common/Button/Button';
 import { IEmployee } from '../../../app/models/IEmployee';
 import { IModal } from '../../../app/models/IModal';
@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { useDeleteEmployeeMutation } from '../../../app/services/employee';
 import classes from '../../common/Modal/Modal.module.scss';
 
-const ModalDeleteEmployee: FC<IModal> = ({ isActive, setActive }) => {
+const ModalDeleteEmployee: FC<IModal> = memo(({ isActive, setActive }) => {
   const selectedEmployee = useAppSelector(state => state.employee);
   const [deleteEmployee] = useDeleteEmployeeMutation();
   const dispatch = useAppDispatch();
@@ -38,6 +38,6 @@ const ModalDeleteEmployee: FC<IModal> = ({ isActive, setActive }) => {
       </div>
     </>
   );
-};
+});
 
 export default ModalDeleteEmployee;

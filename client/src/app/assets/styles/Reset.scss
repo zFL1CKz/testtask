@@ -23,11 +23,6 @@ a:active {
   outline: none;
 }
 
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
 body,
 h1,
 h2,
@@ -62,22 +57,24 @@ body {
 ul[class],
 ol[class] {
   list-style: none;
+  padding: 0;
 }
 
 ul li {
   list-style: none;
 }
 
-a,
-a:visited {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: none;
-}
+a {
+  &:visited {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
 
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+  &:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
 }
 
 img {
@@ -90,10 +87,11 @@ input::-ms-clear {
 }
 button {
   cursor: pointer;
-}
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
 }
 nav,
 footer,

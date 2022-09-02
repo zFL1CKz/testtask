@@ -9,12 +9,10 @@ interface IUseEmployees {
 }
 
 /** Хук для работы с сотрудниками */
-export default function useEmployees(
-  division: IDivision | null
-): IUseEmployees {
+export default function useEmployees(divisionId: number | null): IUseEmployees {
   const { data: employees } = useGetAllEmployeesQuery(null);
   const employeesFromDivision = employees?.filter(
-    employee => employee.divisionId === division?.id
+    employee => employee.divisionId === divisionId
   );
 
   return {

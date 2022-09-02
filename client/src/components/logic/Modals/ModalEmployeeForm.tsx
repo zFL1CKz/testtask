@@ -233,23 +233,23 @@ const ModalEmployeeForm: FC<IModal> = memo(({ isActive, setActive }) => {
           </select>
           <div className={classes.modal__inputs_arrow}></div>
         </div>
-
-        <div className={classes.modal__btns}>
-          <Button
-            className={classes.modal__btn}
-            variant={ButtonVariant.secondary}
-            content='Отмена'
-            onClick={() => setActive(false)}
-          />
-          <Button
-            className={classes.modal__btn}
-            variant={ButtonVariant.primary}
-            content={currentEmployee.id !== 0 ? 'Изменить' : 'Добавить'}
-            onClick={handleSubmitForm}
-          />
-        </div>
-        {formError && <div className={classes.modal__error}>{formError}</div>}
       </div>
+
+      <div className={classes.modal__btns}>
+        <Button
+          className={classes.modal__btn}
+          variant={ButtonVariant.secondary}
+          content='Отмена'
+          onClick={() => setActive(false)}
+        />
+        <Button
+          className={classes.modal__btn}
+          variant={ButtonVariant.primary}
+          content={currentEmployee.id !== 0 ? 'Изменить' : 'Добавить'}
+          onClick={handleSubmitForm}
+        />
+      </div>
+      {formError && <div className={classes.modal__error}>{formError}</div>}
       <div></div>
     </>
   );

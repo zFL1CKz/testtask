@@ -2,21 +2,21 @@ import React, { FC, memo, MouseEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { IDivision } from '../../../app/models/IDivision';
 import { setCurrentDivision } from '../../../app/features/DivisionSlice';
-import deleteSvg from '../../../app/assets/images/employee-delete.svg';
-import editSvg from '../../../app/assets/images/employee-edit.svg';
+import deleteSvg from '../../../app/assets/images/delete-icon.svg';
+import editSvg from '../../../app/assets/images/edit-icon.svg';
 import useTree from '../../../hooks/useTree';
 
 interface DivisionItemProps {
   division: IDivision;
-  update: () => void;
-  remove: () => void;
+  update: (division: IDivision) => void;
+  remove: (division: IDivision) => void;
 }
 
 /** Элемент списка подразделений */
 const DivisionItem: FC<DivisionItemProps> = memo(
   ({ division, update, remove }) => {
     const currentDivision = useAppSelector(state => state.division);
-    const subDivisions = useTree(division).subDivisions;
+    const subDivisions = useTree(division.id).subDivisions;
 
     const dispatch = useAppDispatch();
 
@@ -50,24 +50,28 @@ const DivisionItem: FC<DivisionItemProps> = memo(
             className='division__item-arrow'
             onClick={toggleVisibleDivisionItem}
           ></span>
-          <span onClick={() => dispatch(setCurrentDivision(division))}>
+          <span
+            className='division__item-title--span'
+            title={division.title}
+            onClick={() => dispatch(setCurrentDivision(division))}
+          >
             {division.title}
           </span>
-          <span
-            onClick={() => {
-              dispatch(setCurrentDivision(division));
-              update();
-            }}
-          >
-            <img src={editSvg} alt='' />
-          </span>
-          <span
-            onClick={() => {
-              dispatch(setCurrentDivision(division));
-              remove();
-            }}
-          >
-            <img src={deleteSvg} alt='' />
+          <span className='division__item-title--icons'>
+            <span
+              onClick={() => {
+                update(division);
+              }}
+            >
+              <img src={editSvg} alt='' />
+            </span>
+            <span
+              onClick={() => {
+                remove(division);
+              }}
+            >
+              <img src={deleteSvg} alt='' />
+            </span>
           </span>
         </span>
         {(subDivisions ?? []).map((division: IDivision) => (
