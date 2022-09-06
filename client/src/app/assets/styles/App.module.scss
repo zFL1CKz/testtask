@@ -1,8 +1,9 @@
-/* Стилизация App Component & обнуление дефолтных стилей браузера */
+/* Стилизация App Component */
 
 @import './src/app/assets/fonts/Montserrat/montserrat';
 @import 'Reset';
-@import 'variables';
+@import 'index';
+@import './src/components/components.scss';
 
 html,
 body {

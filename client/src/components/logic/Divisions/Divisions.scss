@@ -1,6 +1,6 @@
-/* Стилизация Division Component */
+@import '../../../app/assets/styles/index';
 
-@import '../../../app/assets/styles/variables';
+/* Стилизация Division Component */
 
 .division {
   min-width: 30vw;
@@ -23,18 +23,7 @@
       user-select: none;
     }
 
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-
-      &-track {
-        background: transparent;
-      }
-      &-thumb {
-        background: $green-color;
-        border-radius: 15px;
-      }
-    }
+    @extend %scrollbar;
   }
 
   &__title {

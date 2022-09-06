@@ -1,6 +1,5 @@
 import { useGetAllEmployeesQuery } from '../app/services/employee';
 import { IEmployee } from '../app/models/IEmployee';
-import { IDivision } from '../app/models/IDivision';
 
 /** Интерфейс хука для работы с сотрудниками */
 interface IUseEmployees {

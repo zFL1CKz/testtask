@@ -1,0 +1,10 @@
+/* Импортирование всех scss модулей */
+
+@import './common/Button/Button.module';
+@import './common/Container/Container.module';
+@import './common/Table/Table.module';
+@import './common/Loader/Loader.module';
+@import './common/Modal/Modal.module';
+@import './common/Wrapper/Wrapper.module';
+@import './logic/Divisions/Divisions';
+@import './logic/Employee/Employee';

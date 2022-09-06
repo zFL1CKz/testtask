@@ -1,4 +1,4 @@
-@import '../../../app/assets/styles/variables';
+@import '../../../app/assets/styles/index';
 
 /* Стилизация Modal Component */
 
@@ -146,20 +146,7 @@
           top: 44px;
         }
 
-        &::-webkit-scrollbar {
-          width: 5px;
-          height: 5px;
-
-          &-track {
-            background: transparent;
-            transform: translateX(-15px);
-          }
-
-          &-thumb {
-            background: $green-color;
-            border-radius: 15px;
-          }
-        }
+        @extend %scrollbar;
       }
     }
 
@@ -214,20 +201,8 @@
       }
     }
 
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
+    @extend %scrollbar;
 
-      &-track {
-        background: transparent;
-        transform: translateX(-15px);
-      }
-
-      &-thumb {
-        background: $green-color;
-        border-radius: 15px;
-      }
-    }
   }
 
   &__btns {

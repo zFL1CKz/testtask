@@ -1,4 +1,4 @@
-@import '../../../app/assets/styles/variables';
+@import '../../../app/assets/styles/index';
 
 /* Стилизация Table Component */
 
@@ -9,19 +9,7 @@
     border-radius: 20px 20px 0 0;
     border-bottom: 2px solid $green-color;
 
-    &::-webkit-scrollbar {
-      width: 5px;
-      height: 5px;
-
-      &-track {
-        background: transparent;
-      }
-
-      &-thumb {
-        background: $green-color;
-        border-radius: 15px;
-      }
-    }
+    @extend %scrollbar;
   }
 
   &__title {
@@ -51,6 +39,7 @@
     th,
     td {
       padding: 12px 6px;
+      line-height: 24px;
     }
 
     td img {

@@ -1,0 +1,18 @@
+@import 'variables';
+
+/* scss-миксины */
+
+%scrollbar{
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+
+    &-track {
+      background: transparent;
+    }
+    &-thumb {
+      background: $green-color;
+      border-radius: 15px;
+    }
+  }
+}

@@ -1,4 +1,6 @@
-@import '../../../app/assets/styles/variables';
+@import '../../../app/assets/styles/index';
+
+/* Стилизация Wrapper Component */
 
 .wrapper {
   padding: 18px 35px;
@@ -28,16 +30,6 @@
     opacity: 0.4;
   }
 
-  &::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+  @extend %scrollbar;
 
-    &-track {
-      background: transparent;
-    }
-    &-thumb {
-      background: $green-color;
-      border-radius: 15px;
-    }
-  }
 }
